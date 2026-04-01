@@ -19,6 +19,7 @@ Clone repo:
 ```bash
 git clone https://github.com/abdulchalik/sab-conversion-kit.git
 cd sab-conversion-kit
+```
 
 Install dependencies:
 
@@ -26,13 +27,16 @@ Install dependencies:
 npm init -y
 npm install -D tailwindcss@3.4.14 postcss autoprefixer
 npx tailwindcss init -p
+```
 
 ## 🛠️ Development
 
 Jalankan Tailwind watcher:
 ```bash
 npm run dev
+```
 
 Build untuk production:
 ```bash
 npm run build
+```
