@@ -1,6 +1,6 @@
 # SAB Conversion Kit
 
-SAB Conversion Kit adalah starter kit berbasis Tailwind CSS untuk membangun landing page dan komponen konversi tinggi (high-converting UI).
+The SAB Conversion Kit is a Tailwind CSS-based starter kit for building landing pages and high-converting UI components.
 
 ## 🚀 Features
 
@@ -31,12 +31,12 @@ npx tailwindcss init -p
 
 ## 🛠️ Development
 
-Jalankan Tailwind watcher:
+Run the Tailwind watcher:
 ```bash
 npm run dev
 ```
 
-Build untuk production:
+Build for production:
 ```bash
 npm run build
 ```
