@@ -1840,6 +1840,10 @@ video {
   line-height: 1.25;
 }
 
+.leading-\[1\.28\] {
+  line-height: 1.28;
+}
+
 .tracking-\[0\.2em\] {
   letter-spacing: 0.2em;
 }

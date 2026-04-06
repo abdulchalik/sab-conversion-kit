@@ -1824,10 +1824,6 @@ video {
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
 }
 
-.leading-\[1\.08\] {
-  line-height: 1.08;
-}
-
 .leading-\[1\.15\] {
   line-height: 1.15;
 }
@@ -2806,12 +2802,12 @@ html {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.875rem 2rem;
+  padding: 0.875rem 1rem;
   background: linear-gradient(135deg, #F59E0B, #F97316);
   color: #0F172A;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   border-radius: 12px;
   transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
   border: none;
@@ -2982,6 +2978,12 @@ html {
 
   to   {
     background-position:  200% center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .headline {
+    line-height: 1.28 !important;
   }
 }
 
