@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --watch",
-    "build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --minify"
+    "build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --minify",
+    "dev:service": "tailwindcss -i ./assets/css/main-service.css -o ./assets/css/output-service.css --watch",
+    "build:service": "tailwindcss -i ./assets/css/main-service.css -o ./assets/css/output-service.css --minify"
   },
   "repository": {
     "type": "git",
