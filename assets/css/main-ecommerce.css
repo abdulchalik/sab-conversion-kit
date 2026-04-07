@@ -282,42 +282,75 @@ body  { overflow-x: hidden; }
 }
 
 /* ─── Image Gallery / Carousel ────────────────────────────────── */
+.gallery-section { overflow: hidden; } /* cegah horizontal overflow di level section */
+
 .gallery-track-wrap {
   overflow: hidden;
   border-radius: 20px;
   position: relative;
   cursor: grab;
   user-select: none;
+  /* Pastikan wrap selalu mengisi lebar parent-nya */
+  width: 100%;
 }
 .gallery-track-wrap:active { cursor: grabbing; }
+
 .gallery-track {
   display: flex;
   transition: transform .55s cubic-bezier(.25,.46,.45,.94);
   will-change: transform;
+  /* Track width = jumlah slide × 100% wrapper */
+  width: 100%;
 }
+
 .gallery-slide {
+  /* Tiap slide = 100% lebar wrapper, tidak bisa menyusut */
   flex: 0 0 100%;
-  min-width: 100%;
+  width: 100%;
   position: relative;
+  overflow: hidden;
 }
+
+/* Aspect-ratio fluid — tidak lagi fixed height */
 .gallery-slide img {
-  width: 100%; height: 480px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
   object-fit: cover;
   display: block;
 }
+
+/* Mobile: aspect ratio sedikit lebih tinggi agar gambar produk terlihat lebih baik */
 @media (max-width: 640px) {
-  .gallery-slide img { height: 280px; }
+  .gallery-slide img { aspect-ratio: 1 / 1; }
 }
 
-/* Thumbnails */
+/* Thumbnails strip — selalu horizontal, langsung di bawah carousel */
+.gallery-thumbs-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  /* Sembunyikan scrollbar tapi tetap scrollable */
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+.gallery-thumbs-strip::-webkit-scrollbar { display: none; }
+
 .thumb-btn {
-  width: 72px; height: 72px;
+  width: 68px; height: 68px;
   border-radius: 10px;
   overflow: hidden;
   border: 2px solid transparent;
   transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
   cursor: pointer; padding: 0; background: none;
   flex-shrink: 0;
+  scroll-snap-align: start;
+}
+/* Mobile: thumb sedikit lebih kecil agar muat lebih banyak */
+@media (max-width: 480px) {
+  .thumb-btn { width: 56px; height: 56px; }
 }
 .thumb-btn img { width: 100%; height: 100%; object-fit: cover; }
 .thumb-btn.active {
@@ -342,18 +375,26 @@ body  { overflow-x: hidden; }
 .gallery-arrow {
   position: absolute;
   top: 50%; transform: translateY(-50%);
-  width: 44px; height: 44px;
+  width: 40px; height: 40px;
   background: rgba(255,255,255,.92);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; border: none;
   box-shadow: 0 4px 16px rgba(0,0,0,.15);
-  transition: background .2s ease, transform .2s ease;
+  transition: background .2s ease, transform .2s ease, color .2s ease;
   z-index: 10;
+  color: #1e3a5f;
 }
-.gallery-arrow:hover { background: #1D4ED8; color: #fff; transform: translateY(-50%) scale(1.1); }
-.gallery-arrow-prev { left: 12px; }
-.gallery-arrow-next { right: 12px; }
+.gallery-arrow:hover { background: #1D4ED8; color: #fff; transform: translateY(-50%) scale(1.08); }
+.gallery-arrow-prev { left: 10px; }
+.gallery-arrow-next { right: 10px; }
+
+/* Mobile: arrow lebih kecil agar tidak menghalangi gambar */
+@media (max-width: 640px) {
+  .gallery-arrow { width: 34px; height: 34px; }
+  .gallery-arrow-prev { left: 8px; }
+  .gallery-arrow-next { right: 8px; }
+}
 
 /* ─── Testimonial Cards ───────────────────────────────────────── */
 .testi-track-wrap { overflow: hidden; }

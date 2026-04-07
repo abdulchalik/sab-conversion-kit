@@ -417,7 +417,7 @@
   <!-- ══════════════════════════════════════════════════════════ -->
   <!-- IMAGE GALLERY / CAROUSEL                                   -->
   <!-- ══════════════════════════════════════════════════════════ -->
-  <section id="galeri" class="py-20 bg-white">
+  <section id="galeri" class="py-20 bg-white gallery-section">
     <div class="max-w-7xl mx-auto px-5 lg:px-8">
 
       <!-- Section Header -->
@@ -431,41 +431,63 @@
         </p>
       </div>
 
-      <div class="grid lg:grid-cols-5 gap-8 items-start">
+      <!-- Grid: [Carousel + Thumbs + Dots] | [Spesifikasi] -->
+      <div class="grid lg:grid-cols-5 gap-6 lg:gap-8 items-start">
 
-        <!-- Main Carousel -->
+        <!-- ── Kolom Kiri: Carousel + Thumbs + Dots (full-width mobile, 3/5 desktop) ── -->
         <div class="lg:col-span-3 anim-left">
-          <div class="gallery-track-wrap shadow-2xl" id="galleryWrap">
+
+          <!-- Track Wrap -->
+          <div class="gallery-track-wrap shadow-xl" id="galleryWrap">
             <!-- Arrows -->
-            <button class="gallery-arrow gallery-arrow-prev" id="galleryPrev" aria-label="Previous">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            <button class="gallery-arrow gallery-arrow-prev" id="galleryPrev" aria-label="Foto sebelumnya">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
             </button>
-            <button class="gallery-arrow gallery-arrow-next" id="galleryNext" aria-label="Next">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <button class="gallery-arrow gallery-arrow-next" id="galleryNext" aria-label="Foto selanjutnya">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
             </button>
 
             <!-- Track -->
             <div class="gallery-track" id="galleryTrack">
               <div class="gallery-slide">
-                <img src="../assets/images/ecommerce/madu_hutan.jpg" alt="Madu Trigona botol" loading="lazy" width="900" height="480" />
+                <img src="../assets/images/ecommerce/madu_hutan.jpg" alt="Madu Trigona botol" loading="lazy" />
               </div>
               <div class="gallery-slide">
-                <img src="../assets/images/ecommerce/madu_hutan_2.jpg" alt="Tekstur madu raw" loading="lazy" width="900" height="480" />
+                <img src="../assets/images/ecommerce/madu_hutan_2.jpg" alt="Tekstur madu raw" loading="lazy" />
               </div>
               <div class="gallery-slide">
-                <img src="../assets/images/ecommerce/madu_hutan_3.jpg" alt="Sarang lebah Trigona" loading="lazy" width="900" height="480" />
+                <img src="../assets/images/ecommerce/madu_hutan_3.jpg" alt="Sarang lebah Trigona" loading="lazy" />
               </div>
               <div class="gallery-slide">
-                <img src="../assets/images/ecommerce/madu_hutan_4.jpg" alt="Packaging premium" loading="lazy" width="900" height="480" />
+                <img src="../assets/images/ecommerce/madu_hutan_4.jpg" alt="Packaging premium" loading="lazy" />
               </div>
               <div class="gallery-slide">
-                <img src="../assets/images/ecommerce/madu_hutan_5.jpg" alt="Madu dengan sendok" loading="lazy" width="900" height="480" />
+                <img src="../assets/images/ecommerce/madu_hutan_5.jpg" alt="Madu dengan sendok" loading="lazy" />
               </div>
             </div>
           </div>
 
+          <!-- Thumbnail Strip — langsung di bawah carousel, semua ukuran layar -->
+          <div class="gallery-thumbs-strip mt-3" id="galleryThumbs">
+            <button class="thumb-btn active" data-slide="0" aria-label="Foto 1">
+              <img src="../assets/images/ecommerce/madu_hutan.jpg" alt="Thumb 1" loading="lazy" />
+            </button>
+            <button class="thumb-btn" data-slide="1" aria-label="Foto 2">
+              <img src="../assets/images/ecommerce/madu_hutan_2.jpg" alt="Thumb 2" loading="lazy" />
+            </button>
+            <button class="thumb-btn" data-slide="2" aria-label="Foto 3">
+              <img src="../assets/images/ecommerce/madu_hutan_3.jpg" alt="Thumb 3" loading="lazy" />
+            </button>
+            <button class="thumb-btn" data-slide="3" aria-label="Foto 4">
+              <img src="../assets/images/ecommerce/madu_hutan_4.jpg" alt="Thumb 4" loading="lazy" />
+            </button>
+            <button class="thumb-btn" data-slide="4" aria-label="Foto 5">
+              <img src="../assets/images/ecommerce/madu_hutan_5.jpg" alt="Thumb 5" loading="lazy" />
+            </button>
+          </div>
+
           <!-- Dots -->
-          <div class="gallery-dots mt-4" id="galleryDots">
+          <div class="gallery-dots mt-3" id="galleryDots">
             <button class="gallery-dot active" data-slide="0" aria-label="Slide 1"></button>
             <button class="gallery-dot" data-slide="1" aria-label="Slide 2"></button>
             <button class="gallery-dot" data-slide="2" aria-label="Slide 3"></button>
@@ -474,29 +496,8 @@
           </div>
         </div>
 
-        <!-- Thumbnails + Info -->
+        <!-- ── Kolom Kanan: Spesifikasi Produk (full-width mobile, 2/5 desktop) ── -->
         <div class="lg:col-span-2 anim-right">
-
-          <!-- Thumbnails -->
-          <div class="flex lg:flex-row gap-3 mb-6 overflow-x-auto pb-2 lg:pb-0 lg:overflow-visible" id="galleryThumbs">
-            <button class="thumb-btn active" data-slide="0">
-              <img src="../assets/images/ecommerce/madu_hutan.jpg" alt="Thumb 1" loading="lazy" />
-            </button>
-            <button class="thumb-btn" data-slide="1">
-              <img src="../assets/images/ecommerce/madu_hutan_2.jpg" alt="Thumb 2" loading="lazy" />
-            </button>
-            <button class="thumb-btn" data-slide="2">
-              <img src="../assets/images/ecommerce/madu_hutan_3.jpg" alt="Thumb 3" loading="lazy" />
-            </button>
-            <button class="thumb-btn" data-slide="3">
-              <img src="../assets/images/ecommerce/madu_hutan_4.jpg" alt="Thumb 4" loading="lazy" />
-            </button>
-            <button class="thumb-btn" data-slide="4">
-              <img src="../assets/images/ecommerce/madu_hutan_5.jpg" alt="Thumb 5" loading="lazy" />
-            </button>
-          </div>
-
-          <!-- Product Details -->
           <div class="bg-ecommerce-light rounded-2xl p-5 border border-ecommerce-primary/10">
             <h3 class="font-ecommerce-heading font-bold text-ecommerce-dark text-lg mb-4">Spesifikasi Produk</h3>
             <div class="space-y-3">
@@ -527,7 +528,12 @@
             </div>
           </div>
 
+          <!-- CTA di bawah spesifikasi -->
+          <a href="#order" class="mt-4 btn-primary-ec w-full text-center font-ecommerce-heading py-3.5 text-sm block">
+            Beli Sekarang — Rp 139.000 →
+          </a>
         </div>
+
       </div>
     </div>
   </section>
