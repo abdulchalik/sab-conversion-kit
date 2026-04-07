@@ -2689,6 +2689,13 @@ body  {
   transform: translateY(0);
 }
 
+@media (max-width: 480px) {
+  .btn-wa {
+    padding: .75rem 1rem;
+    font-size: .875rem;
+  }
+}
+
 .btn-outline-ec {
   display: inline-flex;
   align-items: center;
