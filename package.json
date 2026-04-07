@@ -7,7 +7,9 @@
     "dev": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --watch",
     "build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --minify",
     "dev:service": "tailwindcss -i ./assets/css/main-service.css -o ./assets/css/output-service.css --watch",
-    "build:service": "tailwindcss -i ./assets/css/main-service.css -o ./assets/css/output-service.css --minify"
+    "build:service": "tailwindcss -i ./assets/css/main-service.css -o ./assets/css/output-service.css --minify",
+    "dev:ecommerce": "tailwindcss -i ./assets/css/main-ecommerce.css -o ./assets/css/output-ecommerce.css --watch",
+    "build:ecommerce": "tailwindcss -i ./assets/css/main-ecommerce.css -o ./assets/css/output-ecommerce.css --minify"
   },
   "repository": {
     "type": "git",
