@@ -9,7 +9,9 @@
     "dev:service": "tailwindcss -i ./assets/css/main-service.css -o ./assets/css/output-service.css --watch",
     "build:service": "tailwindcss -i ./assets/css/main-service.css -o ./assets/css/output-service.css --minify",
     "dev:ecommerce": "tailwindcss -i ./assets/css/main-ecommerce.css -o ./assets/css/output-ecommerce.css --watch",
-    "build:ecommerce": "tailwindcss -i ./assets/css/main-ecommerce.css -o ./assets/css/output-ecommerce.css --minify"
+    "build:ecommerce": "tailwindcss -i ./assets/css/main-ecommerce.css -o ./assets/css/output-ecommerce.css --minify",
+    "dev:portfolio": "tailwindcss -i ./assets/css/main-portfolio.css -o ./assets/css/output-portfolio.css --watch",
+    "build:portfolio": "tailwindcss -i ./assets/css/main-portfolio.css -o ./assets/css/output-portfolio.css --minify"
   },
   "repository": {
     "type": "git",

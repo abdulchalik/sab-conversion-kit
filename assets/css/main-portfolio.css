@@ -1,0 +1,398 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════
+   SAB Conversion Kit — Template #4: Case Study / Portfolio
+   Style: Clean & Minimal
+   Palette  : portfolio-dark · primary · secondary · accent · light
+   Fonts    : font-portfolio-heading (Playfair Display) · font-portfolio-body (Lato)
+   ═══════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* ── Scroll-reveal ─────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+.reveal-left  { opacity: 0; transform: translateX(-24px); transition: opacity .55s ease, transform .55s ease; }
+.reveal-right { opacity: 0; transform: translateX(24px);  transition: opacity .55s ease, transform .55s ease; }
+.reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+
+.delay-1 { transition-delay: .10s; }
+.delay-2 { transition-delay: .20s; }
+.delay-3 { transition-delay: .30s; }
+.delay-4 { transition-delay: .40s; }
+.delay-5 { transition-delay: .50s; }
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+@keyframes marquee  { to { transform: translateX(-50%); } }
+@keyframes bar-grow { from { width: 0; } }
+
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT HELPERS
+   ═══════════════════════════════════════════════════════════════ */
+.wrap  { @apply max-w-6xl mx-auto px-6 lg:px-10; }
+.gap-section { @apply py-20 lg:py-28; }
+
+/* ═══════════════════════════════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════════════════════════════ */
+.eyebrow {
+  @apply inline-block font-portfolio-body text-xs font-bold tracking-[.18em]
+         uppercase text-portfolio-primary mb-4;
+}
+
+.display-heading {
+  @apply font-portfolio-heading font-bold text-portfolio-dark leading-tight;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+}
+
+.section-heading {
+  @apply font-portfolio-heading font-bold text-portfolio-dark leading-tight;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+}
+
+.body-lg {
+  @apply font-portfolio-body text-base leading-relaxed text-portfolio-dark/65;
+}
+.body-md {
+  @apply font-portfolio-body text-sm leading-relaxed text-portfolio-dark/60;
+}
+
+/* ── Accent underline on headings ── */
+.underline-accent {
+  text-decoration: underline;
+  text-decoration-color: #F59E0B;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVBAR
+   ═══════════════════════════════════════════════════════════════ */
+#navbar {
+  transition: background .30s ease, box-shadow .30s ease;
+}
+#navbar.scrolled {
+  @apply bg-white/95 shadow-sm;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+#navbar.scrolled .logo-wordmark  { @apply text-portfolio-dark; }
+#navbar.scrolled .hamburger-line { @apply bg-portfolio-dark; }
+#navbar.scrolled .nav-link       { @apply text-portfolio-dark/60 hover:text-portfolio-dark; }
+
+.nav-link {
+  @apply font-portfolio-body text-sm font-semibold text-portfolio-dark/60
+         hover:text-portfolio-dark transition-colors duration-200;
+}
+/* Dark nav (hero) */
+.nav-dark .nav-link { @apply text-portfolio-light/70 hover:text-white; }
+
+.hamburger-line {
+  @apply block w-5 h-px rounded-full transition-all duration-300 bg-portfolio-dark;
+}
+.nav-dark .hamburger-line { @apply bg-portfolio-light; }
+
+#menuBtn.open .hamburger-line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+#menuBtn.open .hamburger-line:nth-child(2) { opacity: 0; }
+#menuBtn.open .hamburger-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.mobile-menu { max-height: 0; overflow: hidden; transition: max-height .38s ease; }
+.mobile-menu.open { max-height: 400px; }
+
+/* ═══════════════════════════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════════════════════════ */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg
+         font-portfolio-body font-bold text-white bg-portfolio-primary
+         cursor-pointer transition-all duration-200;
+  box-shadow: 0 2px 12px rgba(124,58,237,.28);
+}
+.btn-primary:hover {
+  @apply bg-portfolio-dark;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(124,58,237,.35);
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg
+         font-portfolio-body font-bold text-portfolio-primary cursor-pointer
+         transition-all duration-200;
+  border: 1.5px solid rgba(124,58,237,.30);
+  background: transparent;
+}
+.btn-ghost:hover {
+  @apply bg-portfolio-primary/5;
+  border-color: #7C3AED;
+}
+
+.btn-accent {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg
+         font-portfolio-body font-bold cursor-pointer
+         bg-portfolio-accent transition-all duration-200;
+  color: #1a0033;
+  box-shadow: 0 2px 12px rgba(245,158,11,.30);
+}
+.btn-accent:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(245,158,11,.40);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO  (dark background, clean)
+   ═══════════════════════════════════════════════════════════════ */
+.hero-section {
+  @apply bg-portfolio-dark;
+}
+
+/* ── Hero key metric pill ── */
+.hero-metric {
+  @apply inline-flex items-center gap-3 px-5 py-3 rounded-lg;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+/* ── Hero stat ── */
+.hero-stat {
+  @apply flex flex-col items-center px-5 py-4 rounded-lg;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  transition: background .22s ease;
+}
+.hero-stat:hover { background: rgba(255,255,255,.10); }
+
+.hero-stat-val {
+  @apply font-portfolio-heading font-bold text-white;
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  line-height: 1;
+}
+.hero-stat-lbl {
+  @apply font-portfolio-body text-xs font-bold tracking-widest uppercase text-portfolio-light/55 mt-1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LOGO BAR
+   ═══════════════════════════════════════════════════════════════ */
+.logo-bar {
+  @apply bg-portfolio-light;
+  border-top: 1px solid rgba(124,58,237,.10);
+  border-bottom: 1px solid rgba(124,58,237,.10);
+}
+.logo-track {
+  display: flex; gap: 56px; align-items: center;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+.logo-track:hover { animation-play-state: paused; }
+.logo-item {
+  @apply font-portfolio-heading font-bold text-sm text-portfolio-dark/30
+         whitespace-nowrap select-none tracking-wide;
+  transition: color .22s ease;
+  padding: 0 4px;
+}
+.logo-item:hover { @apply text-portfolio-primary; }
+
+/* ═══════════════════════════════════════════════════════════════
+   CASE STUDY CARDS  (light background)
+   ═══════════════════════════════════════════════════════════════ */
+.cs-section { @apply bg-portfolio-light; }
+
+.cs-card {
+  @apply bg-white rounded-2xl overflow-hidden;
+  border: 1px solid rgba(124,58,237,.10);
+  transition: box-shadow .28s ease, transform .28s ease;
+}
+.cs-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(124,58,237,.12);
+}
+
+/* Thin left accent bar */
+.cs-accent-bar {
+  @apply w-full h-0.5 bg-portfolio-primary/20;
+}
+.cs-accent-bar.featured {
+  @apply bg-portfolio-primary;
+}
+
+/* Card internals */
+.cs-label {
+  @apply font-portfolio-body text-xs font-bold tracking-widest uppercase
+         text-portfolio-primary/60 mb-2;
+}
+.cs-body {
+  @apply font-portfolio-body text-sm leading-relaxed text-portfolio-dark/65;
+}
+.cs-divider {
+  @apply my-5;
+  height: 1px;
+  background: rgba(46,16,101,.08);
+}
+.cs-tag {
+  @apply inline-flex items-center px-3 py-1 rounded-md
+         font-portfolio-body text-xs font-bold
+         text-portfolio-primary;
+  background: rgba(124,58,237,.08);
+}
+
+/* Before / After */
+.ba-grid { @apply grid grid-cols-2 gap-2.5 my-3; }
+
+.ba-cell {
+  @apply flex flex-col items-center justify-center py-3 px-2
+         rounded-lg text-center;
+  background: #F5F3FF;
+  border: 1px solid rgba(124,58,237,.10);
+}
+.ba-cell.after {
+  @apply bg-portfolio-dark;
+  border-color: rgba(124,58,237,.30);
+}
+.ba-val      { @apply font-portfolio-heading font-bold text-portfolio-dark; font-size: 1.25rem; }
+.ba-val.after { @apply text-portfolio-accent; }
+.ba-cap      { @apply font-portfolio-body text-xs font-bold tracking-wider uppercase mt-1 text-portfolio-dark/45; }
+.ba-cap.after { @apply text-portfolio-light/55; }
+
+.result-pill {
+  @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md
+         font-portfolio-body text-xs font-bold
+         bg-portfolio-accent/10 text-portfolio-dark;
+  border: 1px solid rgba(245,158,11,.30);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   METRICS  (dark background, clean)
+   ═══════════════════════════════════════════════════════════════ */
+.metrics-section { @apply bg-portfolio-dark; }
+
+.counter-card {
+  @apply flex flex-col items-center text-center py-10 px-6 rounded-xl;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.10);
+  transition: background .25s ease;
+}
+.counter-card:hover { background: rgba(255,255,255,.08); }
+
+.counter-icon {
+  @apply w-12 h-12 rounded-xl flex items-center justify-center mb-4;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.counter-num  {
+  @apply font-portfolio-heading font-bold text-white;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1;
+}
+.counter-unit { @apply font-portfolio-heading font-bold text-portfolio-accent; font-size: clamp(1.6rem, 3vw, 2.4rem); }
+.counter-lbl  { @apply font-portfolio-body text-sm font-semibold text-portfolio-light/65 mt-2; }
+
+/* Progress bars */
+.prog-wrap {
+  @apply w-full rounded-full overflow-hidden;
+  height: 5px;
+  background: rgba(255,255,255,.10);
+}
+.prog-fill {
+  height: 100%;
+  border-radius: 9999px;
+  @apply bg-portfolio-secondary;
+  transition: width .90s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PROCESS  (light)
+   ═══════════════════════════════════════════════════════════════ */
+.process-section { @apply bg-white; }
+
+.step-circle {
+  @apply w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0
+         font-portfolio-heading font-bold text-sm text-white bg-portfolio-primary;
+  position: relative; z-index: 1;
+}
+.step-line {
+  position: absolute;
+  left: 19px; top: 42px;
+  width: 1px; bottom: -20px;
+  @apply bg-portfolio-primary/15;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TESTIMONIALS  (light)
+   ═══════════════════════════════════════════════════════════════ */
+.testi-section { @apply bg-portfolio-light; }
+
+.testi-card {
+  @apply bg-white p-7 rounded-2xl;
+  border: 1px solid rgba(124,58,237,.10);
+  transition: box-shadow .25s ease;
+}
+.testi-card:hover {
+  box-shadow: 0 8px 32px rgba(124,58,237,.10);
+}
+.star { @apply text-portfolio-accent; }
+
+/* ═══════════════════════════════════════════════════════════════
+   CTA / FORM  (dark, clean)
+   ═══════════════════════════════════════════════════════════════ */
+.cta-section { @apply bg-portfolio-dark; }
+
+.form-label {
+  @apply block font-portfolio-body text-xs font-bold tracking-widest
+         uppercase mb-1.5 text-portfolio-light/55;
+}
+.form-field {
+  @apply w-full px-4 py-3.5 rounded-lg font-portfolio-body text-sm
+         text-portfolio-light outline-none transition-all duration-200;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.14);
+}
+.form-field::placeholder { @apply text-portfolio-light/30; }
+.form-field:focus {
+  border-color: #A78BFA;
+  background: rgba(255,255,255,.10);
+  box-shadow: 0 0 0 3px rgba(124,58,237,.15);
+}
+select.form-field option { @apply bg-portfolio-dark text-portfolio-light; }
+.form-field.error {
+  border-color: rgba(252,165,165,.55) !important;
+  box-shadow: 0 0 0 3px rgba(239,68,68,.10) !important;
+}
+
+/* ── Guarantee list items ── */
+.guarantee-item {
+  @apply flex items-start gap-3;
+}
+.guarantee-check {
+  @apply w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5;
+  background: rgba(167,139,250,.18);
+  border: 1px solid rgba(167,139,250,.28);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════════ */
+.footer-section {
+  @apply bg-portfolio-dark;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+.footer-link {
+  @apply font-portfolio-body text-sm text-portfolio-light/40
+         hover:text-portfolio-light/75 transition-colors duration-200;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MISC
+   ═══════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { @apply bg-portfolio-light; }
+::-webkit-scrollbar-thumb  { @apply bg-portfolio-primary/40 rounded-full; }
+::selection                { @apply bg-portfolio-primary/25 text-portfolio-dark; }

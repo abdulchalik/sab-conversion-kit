@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Real client results: 500+ leads, $14.7M revenue, 3.8× average ROI. See our case studies."/>
+  <title>ProofPoint — Our Results Speak</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="../assets/css/output-portfolio.css"/>
+</head>
+
+<body class="bg-portfolio-light text-portfolio-dark font-portfolio-body antialiased overflow-x-hidden">
+
+
+  <!-- ─────────────────────────────────────
+       NAVBAR
+       ───────────────────────────────────── -->
+  <nav id="navbar" class="nav-dark fixed top-0 left-0 right-0 z-50 px-6 lg:px-10 py-5"
+       x-data>
+
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-portfolio-primary flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <span class="logo-wordmark font-portfolio-heading font-bold text-lg text-white transition-colors duration-300">
+          ProofPoint<span class="text-portfolio-accent">.</span>
+        </span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#case-studies" class="nav-link">Results</a>
+        <a href="#metrics"      class="nav-link">Numbers</a>
+        <a href="#process"      class="nav-link">Process</a>
+        <a href="#testimonials" class="nav-link">Clients</a>
+      </div>
+
+      <!-- CTA + hamburger -->
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="hidden lg:inline-flex btn-primary px-5 py-2.5 text-sm">
+          Get Similar Results →
+        </a>
+        <button id="menuBtn" aria-label="Toggle menu"
+                class="lg:hidden flex flex-col gap-[5px] p-1.5">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="mobile-menu lg:hidden mt-3 rounded-xl overflow-hidden bg-white border border-portfolio-primary/10">
+      <div class="flex flex-col p-3 gap-0.5">
+        <a href="#case-studies" class="px-4 py-3 rounded-lg font-portfolio-body text-sm font-semibold text-portfolio-dark/70 hover:text-portfolio-dark hover:bg-portfolio-light transition-colors">Results</a>
+        <a href="#metrics"      class="px-4 py-3 rounded-lg font-portfolio-body text-sm font-semibold text-portfolio-dark/70 hover:text-portfolio-dark hover:bg-portfolio-light transition-colors">Numbers</a>
+        <a href="#process"      class="px-4 py-3 rounded-lg font-portfolio-body text-sm font-semibold text-portfolio-dark/70 hover:text-portfolio-dark hover:bg-portfolio-light transition-colors">Process</a>
+        <a href="#testimonials" class="px-4 py-3 rounded-lg font-portfolio-body text-sm font-semibold text-portfolio-dark/70 hover:text-portfolio-dark hover:bg-portfolio-light transition-colors">Clients</a>
+        <div class="h-px mx-4 my-1 bg-portfolio-dark/08"></div>
+        <a href="#contact" class="btn-primary text-sm text-center py-3 px-4 m-1">Get Similar Results →</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ─────────────────────────────────────
+       HERO  — dark, clean
+       ───────────────────────────────────── -->
+  <section id="hero" class="hero-section min-h-screen flex items-center">
+    <div class="wrap py-36 w-full">
+      <div class="max-w-3xl">
+
+        <!-- Eyebrow -->
+        <p class="font-portfolio-body text-xs font-bold tracking-[.18em] uppercase text-portfolio-secondary mb-6 reveal">
+          Digital Marketing Agency · 120+ Clients · $14.7M Revenue Generated
+        </p>
+
+        <!-- Headline -->
+        <h1 class="font-portfolio-heading font-bold text-white leading-tight mb-6 reveal delay-1"
+            style="font-size:clamp(2.8rem,6vw,4.8rem);">
+          Our Results<br/>
+          <em class="not-italic" style="color:#F59E0B;">Speak for Themselves</em>
+        </h1>
+
+        <!-- Body -->
+        <p class="font-portfolio-body text-lg text-portfolio-light/70 leading-relaxed mb-8 reveal delay-2"
+           style="max-width:480px;">
+          Real clients. Real before &amp; after numbers. See exactly what we've delivered — then let's talk about yours.
+        </p>
+
+        <!-- Key metric -->
+        <div class="hero-metric mb-10 reveal delay-3" style="display:inline-flex;">
+          <svg class="w-4 h-4 text-portfolio-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+          </svg>
+          <span class="font-portfolio-heading font-bold text-xl text-white">500+</span>
+          <span class="font-portfolio-body text-sm text-portfolio-light/65">qualified leads generated across active accounts</span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-3 reveal delay-4">
+          <a href="#case-studies" class="btn-primary px-7 py-3.5 text-sm">View Case Studies ↓</a>
+          <a href="#contact"      class="btn-ghost  px-7 py-3.5 text-sm" style="border-color:rgba(255,255,255,.20);color:rgba(245,243,255,.80);">
+            Get Similar Results →
+          </a>
+        </div>
+
+      </div>
+
+      <!-- 4 mini stats — bottom right on lg, below text on sm -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-16 lg:mt-20 reveal delay-5">
+        <div class="hero-stat">
+          <span class="hero-stat-val">3.8<span class="text-portfolio-secondary text-2xl">×</span></span>
+          <span class="hero-stat-lbl">Avg. ROI</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">47<span class="text-portfolio-accent text-2xl">%</span></span>
+          <span class="hero-stat-lbl">Conv. Lift</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">120<span class="text-portfolio-secondary text-2xl">+</span></span>
+          <span class="hero-stat-lbl">Clients</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">98<span class="text-portfolio-accent text-2xl">%</span></span>
+          <span class="hero-stat-lbl">Retention</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────
+       LOGO BAR
+       ───────────────────────────────────── -->
+  <div class="logo-bar py-5 overflow-hidden">
+    <p class="font-portfolio-body text-center text-xs tracking-[.15em] uppercase text-portfolio-dark/30 mb-4">
+      Brands we've grown
+    </p>
+    <div style="overflow:hidden; mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);">
+      <div class="logo-track">
+        <span class="logo-item">LuxeThreads</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">Flowdesk SaaS</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">Apex Dental</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">Novalytics</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">SwiftCart Co.</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">PeakCoach</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">TerraFinance</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">BrightSpace EDU</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <!-- duplicate -->
+        <span class="logo-item">LuxeThreads</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">Flowdesk SaaS</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">Apex Dental</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">Novalytics</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">SwiftCart Co.</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">PeakCoach</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">TerraFinance</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+        <span class="logo-item">BrightSpace EDU</span>
+        <span class="logo-item text-portfolio-primary/20">·</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─────────────────────────────────────
+       CASE STUDIES
+       ───────────────────────────────────── -->
+  <section id="case-studies" class="cs-section gap-section">
+    <div class="wrap">
+
+      <!-- Header -->
+      <div class="mb-14">
+        <p class="eyebrow reveal">Case Studies</p>
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+          <h2 class="section-heading reveal delay-1">
+            The Work. The Numbers.<br/>
+            <span class="underline-accent">The Proof.</span>
+          </h2>
+          <p class="body-lg max-w-xs lg:text-right reveal delay-2">
+            Real campaigns with before &amp; after data — judge the results yourself.
+          </p>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="grid lg:grid-cols-3 gap-6">
+
+
+        <!-- ── Card 1 ── -->
+        <div class="cs-card reveal delay-1">
+          <div class="cs-accent-bar"></div>
+          <div class="p-7">
+
+            <div class="flex items-start justify-between mb-6">
+              <div>
+                <p class="cs-label">Client</p>
+                <h3 class="font-portfolio-heading font-bold text-xl text-portfolio-dark">LuxeThreads Co.</h3>
+              </div>
+              <span class="cs-tag">E-Commerce</span>
+            </div>
+
+            <p class="cs-label">Challenge</p>
+            <p class="cs-body mb-5">
+              $18k/month ad spend with 0.8% conversion. Product pages lacked social proof and 74% of carts abandoned at checkout.
+            </p>
+
+            <p class="cs-label">Solution</p>
+            <p class="cs-body">
+              Full funnel rebuild — new landing pages with UGC video, 3-step checkout, retargeting sequences, and weekly A/B tests.
+            </p>
+
+            <div class="cs-divider"></div>
+
+            <p class="cs-label">Before vs. After — 90 Days</p>
+            <div class="ba-grid">
+              <div class="ba-cell">
+                <span class="ba-val">0.8%</span>
+                <span class="ba-cap">Conv. Before</span>
+              </div>
+              <div class="ba-cell after">
+                <span class="ba-val after">4.7%</span>
+                <span class="ba-cap after">Conv. After</span>
+              </div>
+              <div class="ba-cell">
+                <span class="ba-val">$18k</span>
+                <span class="ba-cap">Spend /mo</span>
+              </div>
+              <div class="ba-cell after">
+                <span class="ba-val after">3.6×</span>
+                <span class="ba-cap after">ROAS</span>
+              </div>
+            </div>
+
+            <p class="cs-label mt-5">Result</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="result-pill">↑ +340% Revenue</span>
+              <span class="result-pill">529 Leads</span>
+              <span class="result-pill">3.6× ROAS</span>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ── Card 2 (featured) ── -->
+        <div class="cs-card reveal delay-2">
+          <div class="cs-accent-bar featured"></div>
+          <div class="p-7">
+
+            <div class="flex items-start justify-between mb-1">
+              <div>
+                <p class="cs-label">Client</p>
+                <h3 class="font-portfolio-heading font-bold text-xl text-portfolio-dark">Flowdesk SaaS</h3>
+              </div>
+              <div class="flex flex-col items-end gap-1.5">
+                <span class="cs-tag">B2B SaaS</span>
+                <span class="font-portfolio-body text-xs font-bold text-portfolio-primary bg-portfolio-primary/08 px-2 py-0.5 rounded">★ Featured</span>
+              </div>
+            </div>
+
+            <div class="h-5"></div>
+
+            <p class="cs-label">Challenge</p>
+            <p class="cs-body mb-5">
+              Trial signups strong but paid conversion at 6%. Monthly churn of 22% eroded MRR faster than acquisition could replace it.
+            </p>
+
+            <p class="cs-label">Solution</p>
+            <p class="cs-body">
+              Rebuilt onboarding, launched a 14-touch email nurture, ICP-targeted LinkedIn ads, and a product-led qualifier before demos.
+            </p>
+
+            <div class="cs-divider"></div>
+
+            <p class="cs-label">Before vs. After — 6 Months</p>
+            <div class="ba-grid">
+              <div class="ba-cell">
+                <span class="ba-val">6%</span>
+                <span class="ba-cap">Trial→Paid Before</span>
+              </div>
+              <div class="ba-cell after">
+                <span class="ba-val after">31%</span>
+                <span class="ba-cap after">Trial→Paid After</span>
+              </div>
+              <div class="ba-cell">
+                <span class="ba-val">22%</span>
+                <span class="ba-cap">Churn Before</span>
+              </div>
+              <div class="ba-cell after">
+                <span class="ba-val after">7%</span>
+                <span class="ba-cap after">Churn After</span>
+              </div>
+            </div>
+
+            <p class="cs-label mt-5">Result</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="result-pill">↑ $2.1M ARR</span>
+              <span class="result-pill">4.2× LTV</span>
+              <span class="result-pill">−68% Churn</span>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ── Card 3 ── -->
+        <div class="cs-card reveal delay-3">
+          <div class="cs-accent-bar"></div>
+          <div class="p-7">
+
+            <div class="flex items-start justify-between mb-6">
+              <div>
+                <p class="cs-label">Client</p>
+                <h3 class="font-portfolio-heading font-bold text-xl text-portfolio-dark">Apex Dental Clinic</h3>
+              </div>
+              <span class="cs-tag">Local Services</span>
+            </div>
+
+            <p class="cs-label">Challenge</p>
+            <p class="cs-body mb-5">
+              Zero digital presence, fully reliant on referrals. New patient bookings flat 18 months. Cost per acquisition: $148/patient.
+            </p>
+
+            <p class="cs-label">Solution</p>
+            <p class="cs-body">
+              Local SEO landing page, Google Search + Meta retargeting, and a review-generation system to own the local map pack.
+            </p>
+
+            <div class="cs-divider"></div>
+
+            <p class="cs-label">Before vs. After — 4 Months</p>
+            <div class="ba-grid">
+              <div class="ba-cell">
+                <span class="ba-val">$148</span>
+                <span class="ba-cap">CPA Before</span>
+              </div>
+              <div class="ba-cell after">
+                <span class="ba-val after">$31</span>
+                <span class="ba-cap after">CPA After</span>
+              </div>
+              <div class="ba-cell">
+                <span class="ba-val">12/mo</span>
+                <span class="ba-cap">Patients Before</span>
+              </div>
+              <div class="ba-cell after">
+                <span class="ba-val after">180/mo</span>
+                <span class="ba-cap after">Patients After</span>
+              </div>
+            </div>
+
+            <p class="cs-label mt-5">Result</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="result-pill">↑ 5.1× ROI</span>
+              <span class="result-pill">−79% CPA</span>
+              <span class="result-pill">4.9★ Google</span>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div><!-- /cards -->
+
+      <p class="font-portfolio-body text-sm text-portfolio-dark/40 text-center mt-10 reveal">
+        3 of 47 case studies. &nbsp;
+        <a href="#contact" class="text-portfolio-primary hover:underline underline-offset-4">Talk to us about yours →</a>
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────
+       METRICS / COUNTERS  — dark
+       ───────────────────────────────────── -->
+  <section id="metrics" class="metrics-section gap-section">
+    <div class="wrap">
+
+      <!-- Header -->
+      <div class="mb-16">
+        <p class="font-portfolio-body text-xs font-bold tracking-[.18em] uppercase text-portfolio-secondary mb-4 reveal">
+          Numbers — Q1 2026
+        </p>
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+          <h2 class="font-portfolio-heading font-bold text-white leading-tight reveal delay-1"
+              style="font-size:clamp(1.8rem,3.5vw,2.8rem);">
+            Impact Delivered<br/>
+            <span class="text-portfolio-accent">Across Every Client</span>
+          </h2>
+          <p class="font-portfolio-body text-sm text-portfolio-light/60 max-w-xs lg:text-right reveal delay-2">
+            Aggregate results from 120 active accounts, updated quarterly.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4 big counters -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+
+        <div class="counter-card reveal delay-1">
+          <div class="counter-icon">
+            <svg class="w-5 h-5 text-portfolio-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div class="flex items-baseline gap-0.5">
+            <span class="counter-num" data-target="500">0</span>
+            <span class="counter-unit">+</span>
+          </div>
+          <span class="counter-lbl">Leads Generated</span>
+        </div>
+
+        <div class="counter-card reveal delay-2">
+          <div class="counter-icon">
+            <svg class="w-5 h-5 text-portfolio-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+          </div>
+          <div class="flex items-baseline gap-0.5">
+            <span class="counter-num counter-decimal" data-target="3.8">0</span>
+            <span class="counter-unit">×</span>
+          </div>
+          <span class="counter-lbl">Average ROI</span>
+        </div>
+
+        <div class="counter-card reveal delay-3">
+          <div class="counter-icon">
+            <svg class="w-5 h-5 text-portfolio-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10"/>
+            </svg>
+          </div>
+          <div class="flex items-baseline gap-0.5">
+            <span class="counter-num" data-target="47">0</span>
+            <span class="counter-unit">%</span>
+          </div>
+          <span class="counter-lbl">Conv. Rate Lift</span>
+        </div>
+
+        <div class="counter-card reveal delay-4">
+          <div class="counter-icon">
+            <svg class="w-5 h-5 text-portfolio-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+            </svg>
+          </div>
+          <div class="flex items-baseline gap-0.5">
+            <span class="counter-num" data-target="120">0</span>
+            <span class="counter-unit">+</span>
+          </div>
+          <span class="counter-lbl">Clients</span>
+        </div>
+
+      </div>
+
+      <!-- Split: progress bars + stat list -->
+      <div class="grid lg:grid-cols-2 gap-8 reveal delay-2">
+
+        <!-- Progress bars -->
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);" class="rounded-xl p-7">
+          <h4 class="font-portfolio-heading font-bold text-base text-white mb-7">
+            Clients with Positive ROI by Channel
+          </h4>
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-portfolio-body text-sm font-semibold text-portfolio-light/80">Paid Social</span>
+                <span class="font-portfolio-body text-sm font-bold text-portfolio-accent">82%</span>
+              </div>
+              <div class="prog-wrap"><div class="prog-fill" data-width="82" style="width:0"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-portfolio-body text-sm font-semibold text-portfolio-light/80">Google Ads</span>
+                <span class="font-portfolio-body text-sm font-bold text-portfolio-accent">76%</span>
+              </div>
+              <div class="prog-wrap"><div class="prog-fill" data-width="76" style="width:0"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-portfolio-body text-sm font-semibold text-portfolio-light/80">Email Automation</span>
+                <span class="font-portfolio-body text-sm font-bold text-portfolio-accent">91%</span>
+              </div>
+              <div class="prog-wrap"><div class="prog-fill" data-width="91" style="width:0"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-portfolio-body text-sm font-semibold text-portfolio-light/80">SEO &amp; Content</span>
+                <span class="font-portfolio-body text-sm font-bold text-portfolio-accent">68%</span>
+              </div>
+              <div class="prog-wrap"><div class="prog-fill" data-width="68" style="width:0"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stat list -->
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4 p-5 rounded-xl" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-portfolio-accent/15 border border-portfolio-accent/20">
+              <svg class="w-5 h-5 text-portfolio-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <div class="font-portfolio-heading font-bold text-2xl text-white">$14.7M<span class="text-portfolio-accent">+</span></div>
+              <div class="font-portfolio-body text-sm text-portfolio-light/60">Total client revenue generated</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 p-5 rounded-xl" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-portfolio-secondary/15 border border-portfolio-secondary/20">
+              <svg class="w-5 h-5 text-portfolio-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div>
+              <div class="font-portfolio-heading font-bold text-2xl text-white">380<span class="text-portfolio-secondary">+</span></div>
+              <div class="font-portfolio-body text-sm text-portfolio-light/60">Campaigns launched &amp; optimised</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 p-5 rounded-xl" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-portfolio-accent/15 border border-portfolio-accent/20">
+              <svg class="w-5 h-5 text-portfolio-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            <div>
+              <div class="font-portfolio-heading font-bold text-2xl text-white">98.4<span class="text-portfolio-accent">%</span></div>
+              <div class="font-portfolio-body text-sm text-portfolio-light/60">Client satisfaction (NPS)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────
+       PROCESS  — white
+       ───────────────────────────────────── -->
+  <section id="process" class="process-section gap-section">
+    <div class="wrap">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+        <div>
+          <p class="eyebrow reveal">How We Work</p>
+          <h2 class="section-heading mb-5 reveal delay-1">
+            4 Steps From<br/>
+            <span class="underline-accent">Brief to Results</span>
+          </h2>
+          <p class="body-lg mb-8 reveal delay-2">
+            Built from 380+ campaigns over 5 years. Every client goes through the same proven process — no shortcuts, no surprises.
+          </p>
+
+          <!-- Avatar proof -->
+          <div class="flex items-center gap-3 reveal delay-3">
+            <div class="flex -space-x-2.5">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold font-portfolio-body text-white border-2 border-white bg-portfolio-primary">JL</div>
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold font-portfolio-body text-white border-2 border-white" style="background:linear-gradient(135deg,#A78BFA,#F59E0B);">MK</div>
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold font-portfolio-body text-white border-2 border-white bg-portfolio-accent">RS</div>
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold font-portfolio-body text-portfolio-primary border-2 border-white bg-portfolio-primary/10">+117</div>
+            </div>
+            <p class="font-portfolio-body text-sm text-portfolio-dark/55">
+              120+ clients scaled with this process
+            </p>
+          </div>
+        </div>
+
+        <!-- Steps -->
+        <div>
+          <div class="flex gap-5 items-start relative pb-8">
+            <div class="step-circle">1</div>
+            <div class="step-line"></div>
+            <div class="pt-1">
+              <h4 class="font-portfolio-heading font-bold text-lg text-portfolio-dark mb-1.5">Audit &amp; Discovery</h4>
+              <p class="font-portfolio-body text-sm text-portfolio-dark/60 leading-relaxed">
+                Full funnel audit, competitor analysis, and customer research to find the exact gaps costing you revenue right now.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-5 items-start relative pb-8">
+            <div class="step-circle">2</div>
+            <div class="step-line"></div>
+            <div class="pt-1">
+              <h4 class="font-portfolio-heading font-bold text-lg text-portfolio-dark mb-1.5">Strategy &amp; Offer Design</h4>
+              <p class="font-portfolio-body text-sm text-portfolio-dark/60 leading-relaxed">
+                Custom growth blueprint with channel mix, messaging framework, and a 90-day milestone roadmap with clear KPIs.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-5 items-start relative pb-8">
+            <div class="step-circle">3</div>
+            <div class="step-line"></div>
+            <div class="pt-1">
+              <h4 class="font-portfolio-heading font-bold text-lg text-portfolio-dark mb-1.5">Build &amp; Launch</h4>
+              <p class="font-portfolio-body text-sm text-portfolio-dark/60 leading-relaxed">
+                Landing pages, ad creatives, email sequences — live within 14 days with A/B tests running from day one.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-5 items-start">
+            <div class="step-circle">4</div>
+            <div class="pt-1">
+              <h4 class="font-portfolio-heading font-bold text-lg text-portfolio-dark mb-1.5">Optimise &amp; Scale</h4>
+              <p class="font-portfolio-body text-sm text-portfolio-dark/60 leading-relaxed">
+                Weekly reviews, aggressive CRO, and budget reallocation to compound growth month over month.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────
+       TESTIMONIALS  — light
+       ───────────────────────────────────── -->
+  <section id="testimonials" class="testi-section gap-section">
+    <div class="wrap">
+
+      <div class="mb-14">
+        <p class="eyebrow reveal">Client Voices</p>
+        <h2 class="section-heading reveal delay-1">
+          Don't Take <span class="underline-accent">Our Word for It</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+
+        <div class="testi-card reveal delay-1">
+          <div class="flex gap-0.5 mb-5">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="font-portfolio-body text-sm text-portfolio-dark/70 leading-relaxed mb-6">
+            "Revenue tripled in 60 days. I've worked with 4 agencies before — nobody has delivered results this fast with this level of data transparency."
+          </p>
+          <div class="flex items-center gap-3 pt-5 border-t border-portfolio-dark/08">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold font-portfolio-body text-white bg-portfolio-primary">SM</div>
+            <div>
+              <div class="font-portfolio-heading font-bold text-sm text-portfolio-dark">Sophie Martinez</div>
+              <div class="font-portfolio-body text-xs text-portfolio-dark/45">CEO, LuxeThreads Co.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal delay-2">
+          <div class="flex gap-0.5 mb-5">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="font-portfolio-body text-sm text-portfolio-dark/70 leading-relaxed mb-6">
+            "Going from 6% to 31% paid conversion felt impossible. ProofPoint rebuilt how we think about the full funnel. $2.1M in new ARR speaks for itself."
+          </p>
+          <div class="flex items-center gap-3 pt-5 border-t border-portfolio-dark/08">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold font-portfolio-body text-white" style="background:linear-gradient(135deg,#A78BFA,#F59E0B);">DK</div>
+            <div>
+              <div class="font-portfolio-heading font-bold text-sm text-portfolio-dark">David Kim</div>
+              <div class="font-portfolio-body text-xs text-portfolio-dark/45">CRO, Flowdesk SaaS</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal delay-3">
+          <div class="flex gap-0.5 mb-5">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="font-portfolio-body text-sm text-portfolio-dark/70 leading-relaxed mb-6">
+            "From 12 new patients a month to 180. CPA dropped 79%. I wish I'd found them two years earlier — every month of delay cost me real money."
+          </p>
+          <div class="flex items-center gap-3 pt-5 border-t border-portfolio-dark/08">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold font-portfolio-body text-white bg-portfolio-accent">RP</div>
+            <div>
+              <div class="font-portfolio-heading font-bold text-sm text-portfolio-dark">Dr. Rachel Patel</div>
+              <div class="font-portfolio-body text-xs text-portfolio-dark/45">Director, Apex Dental Clinic</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────
+       CTA + FORM  — dark
+       ───────────────────────────────────── -->
+  <section id="contact" class="cta-section gap-section">
+    <div class="wrap">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Left -->
+        <div>
+          <p class="font-portfolio-body text-xs font-bold tracking-[.18em] uppercase text-portfolio-secondary mb-5 reveal">
+            Get Similar Results
+          </p>
+          <h2 class="font-portfolio-heading font-bold text-white leading-tight mb-6 reveal delay-1"
+              style="font-size:clamp(1.8rem,3.5vw,2.8rem);">
+            Ready to Be Our<br/>
+            <span class="text-portfolio-accent">Next Case Study?</span>
+          </h2>
+          <p class="font-portfolio-body text-base text-portfolio-light/65 leading-relaxed mb-10 reveal delay-2">
+            Tell us about your business. We'll build a custom growth analysis — specific to your numbers, your market, your stage. Free, no commitment.
+          </p>
+
+          <!-- Guarantees -->
+          <div class="space-y-4 reveal delay-3">
+            <div class="guarantee-item">
+              <div class="guarantee-check">
+                <svg class="w-3 h-3 text-portfolio-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="font-portfolio-body text-sm text-portfolio-light/70">Free 45-min strategy session — no sales pitch, just value</span>
+            </div>
+            <div class="guarantee-item">
+              <div class="guarantee-check">
+                <svg class="w-3 h-3 text-portfolio-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="font-portfolio-body text-sm text-portfolio-light/70">Custom growth analysis delivered within 48 hours</span>
+            </div>
+            <div class="guarantee-item">
+              <div class="guarantee-check">
+                <svg class="w-3 h-3 text-portfolio-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="font-portfolio-body text-sm text-portfolio-light/70">No results in 30 days — you don't pay</span>
+            </div>
+            <div class="guarantee-item">
+              <div class="guarantee-check">
+                <svg class="w-3 h-3 text-portfolio-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="font-portfolio-body text-sm text-portfolio-light/70">Month-to-month — stay because you're growing</span>
+            </div>
+          </div>
+
+          <!-- Urgency note -->
+          <div class="mt-10 p-4 rounded-lg bg-portfolio-accent/10 border border-portfolio-accent/25 reveal delay-4">
+            <p class="font-portfolio-body text-sm text-portfolio-accent/90">
+              <strong>Only 3 new client slots open this month.</strong> We keep onboarding small to protect results quality.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="reveal-right delay-2">
+          <div class="p-8 rounded-2xl" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);">
+
+            <h3 class="font-portfolio-heading font-bold text-xl text-white mb-1">Get Similar Results</h3>
+            <p class="font-portfolio-body text-sm text-portfolio-light/50 mb-7">We'll reply within 24 hours.</p>
+
+            <form id="ctaForm" novalidate class="space-y-4">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="fname"   class="form-label">Name *</label>
+                  <input type="text"  id="fname"   name="fname"   class="form-field" placeholder="Jane Smith"      required/>
+                </div>
+                <div>
+                  <label for="company" class="form-label">Company *</label>
+                  <input type="text"  id="company" name="company" class="form-field" placeholder="Acme Inc."        required/>
+                </div>
+              </div>
+              <div>
+                <label for="email"   class="form-label">Email *</label>
+                <input type="email" id="email"   name="email"   class="form-field" placeholder="jane@company.com" required/>
+              </div>
+              <div>
+                <label for="website" class="form-label">Website</label>
+                <input type="url"   id="website" name="website" class="form-field" placeholder="https://yoursite.com"/>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="industry" class="form-label">Industry *</label>
+                  <select id="industry" name="industry" class="form-field" required>
+                    <option value="" disabled selected>Select…</option>
+                    <option>E-Commerce</option>
+                    <option>SaaS / Tech</option>
+                    <option>Healthcare</option>
+                    <option>Finance</option>
+                    <option>Real Estate</option>
+                    <option>Education / Coaching</option>
+                    <option>Agency</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="budget" class="form-label">Budget /mo *</label>
+                  <select id="budget" name="budget" class="form-field" required>
+                    <option value="" disabled selected>Select…</option>
+                    <option>Under $5k</option>
+                    <option>$5k – $15k</option>
+                    <option>$15k – $50k</option>
+                    <option>$50k+</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label for="goal" class="form-label">Biggest challenge right now *</label>
+                <textarea id="goal" name="goal" rows="3" class="form-field resize-none"
+                          placeholder="e.g. Traffic is fine but conversions are too low…" required></textarea>
+              </div>
+
+              <button type="submit" class="btn-accent w-full py-4 text-sm font-bold mt-2">
+                Get My Free Growth Analysis →
+              </button>
+
+              <p class="font-portfolio-body text-xs text-center text-portfolio-light/30">
+                🔒 100% private. No spam. Unsubscribe anytime.
+              </p>
+            </form>
+
+            <!-- Success -->
+            <div id="formSuccess" class="hidden flex-col items-center text-center py-12 gap-4">
+              <div class="w-14 h-14 rounded-full flex items-center justify-center bg-portfolio-primary/25 border border-portfolio-secondary/35">
+                <svg class="w-7 h-7 text-portfolio-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <h4 class="font-portfolio-heading font-bold text-xl text-white">You're In!</h4>
+              <p class="font-portfolio-body text-sm text-portfolio-light/60 max-w-xs">
+                We've received your request and will send your custom growth analysis within 24 hours.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────
+       FOOTER
+       ───────────────────────────────────── -->
+  <footer class="footer-section py-12">
+    <div class="wrap">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <a href="#" class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-md bg-portfolio-primary flex items-center justify-center">
+            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <span class="font-portfolio-heading font-bold text-base text-white">ProofPoint<span class="text-portfolio-accent">.</span></span>
+        </a>
+        <div class="flex flex-wrap items-center gap-6">
+          <a href="#case-studies" class="footer-link">Results</a>
+          <a href="#metrics"      class="footer-link">Numbers</a>
+          <a href="#process"      class="footer-link">Process</a>
+          <a href="#testimonials" class="footer-link">Clients</a>
+          <a href="#contact"      class="footer-link">Contact</a>
+        </div>
+        <p class="font-portfolio-body text-xs text-portfolio-light/25">
+          © 2026 ProofPoint Agency
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ── JS ── -->
+  <script>
+    /* Navbar: switch classes when scrolled out of hero */
+    const navbar = document.getElementById('navbar');
+    function updateNav() {
+      const scrolled = window.scrollY > 80;
+      navbar.classList.toggle('scrolled', scrolled);
+      navbar.classList.toggle('nav-dark', !scrolled);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    /* Mobile menu */
+    const menuBtn    = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menuBtn.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }));
+
+    /* Scroll-reveal */
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
+      .forEach(el => revealObs.observe(el));
+
+    /* Animated counters */
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+    function runCounter(el, target, decimal, ms) {
+      const t0 = performance.now();
+      (function tick(now) {
+        const p = Math.min((now - t0) / ms, 1);
+        const v = easeOut(p) * target;
+        el.textContent = decimal ? v.toFixed(1) : Math.round(v);
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = decimal ? parseFloat(target).toFixed(1) : target;
+      })(t0);
+    }
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          runCounter(e.target, parseFloat(e.target.dataset.target),
+            e.target.classList.contains('counter-decimal'), 1800);
+          e.target.setAttribute('data-done','1');
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    const counterObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.done) {
+          runCounter(e.target, parseFloat(e.target.dataset.target),
+            e.target.classList.contains('counter-decimal'), 1800);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter-num[data-target]').forEach(el => counterObs.observe(el));
+
+    /* Progress bars */
+    const barObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.width = e.target.dataset.width + '%';
+          barObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.prog-fill').forEach(el => barObs.observe(el));
+
+    /* Form */
+    document.getElementById('ctaForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+      this.querySelectorAll('[required]').forEach(f => {
+        const empty = !f.value.trim();
+        f.classList.toggle('error', empty);
+        if (empty) valid = false;
+      });
+      if (!valid) return;
+      const btn = this.querySelector('button[type="submit"]');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      setTimeout(() => {
+        this.style.display = 'none';
+        const s = document.getElementById('formSuccess');
+        s.classList.remove('hidden'); s.classList.add('flex');
+      }, 900);
+    });
+    document.querySelectorAll('.form-field').forEach(f =>
+      f.addEventListener('input', () => f.classList.remove('error'))
+    );
+  </script>
+
+</body>
+</html>
