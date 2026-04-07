@@ -193,7 +193,7 @@ html { scroll-behavior: smooth; }
 }
 .logo-track:hover { animation-play-state: paused; }
 .logo-item {
-  @apply font-portfolio-heading font-bold text-sm text-portfolio-dark/30
+  @apply font-portfolio-heading font-bold text-sm text-portfolio-dark/65
          whitespace-nowrap select-none tracking-wide;
   transition: color .22s ease;
   padding: 0 4px;
