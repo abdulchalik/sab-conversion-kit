@@ -806,3 +806,9 @@ body  { overflow-x: hidden; font-family: 'Open Sans', sans-serif; }
   --tw-text-opacity: 1;
   color: rgb(4 47 46 / var(--tw-text-opacity));
 }
+
+@media (max-width: 480px) {
+  #navbar .nav-link {
+    color: #042F2E;
+}
+}

@@ -4085,6 +4085,12 @@ body  {
   color: rgb(4 47 46 / var(--tw-text-opacity));
 }
 
+@media (max-width: 480px) {
+  #navbar .nav-link {
+    color: #042F2E;
+  }
+}
+
 .hover\:scale-110:hover {
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
