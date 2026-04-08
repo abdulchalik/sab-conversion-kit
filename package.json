@@ -13,7 +13,9 @@
     "dev:portfolio": "tailwindcss -i ./assets/css/main-portfolio.css -o ./assets/css/output-portfolio.css --watch",
     "build:portfolio": "tailwindcss -i ./assets/css/main-portfolio.css -o ./assets/css/output-portfolio.css --minify",
     "dev:webinar": "tailwindcss -i ./assets/css/main-webinar.css -o ./assets/css/output-webinar.css --watch",
-    "build:webinar": "tailwindcss -i ./assets/css/main-webinar.css -o ./assets/css/output-webinar.css --minify"
+    "build:webinar": "tailwindcss -i ./assets/css/main-webinar.css -o ./assets/css/output-webinar.css --minify",
+    "dev:comingsoon": "tailwindcss -i ./assets/css/main-comingsoon.css -o ./assets/css/output-comingsoon.css --watch",
+    "build:comingsoon": "tailwindcss -i ./assets/css/main-comingsoon.css -o ./assets/css/output-comingsoon.css --minify"
   },
   "repository": {
     "type": "git",

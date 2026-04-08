@@ -1960,6 +1960,11 @@ video {
   background-color: rgb(20 184 166 / 0.2);
 }
 
+.bg-comingsoon-dark {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 27 75 / var(--tw-bg-opacity));
+}
+
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
@@ -2379,6 +2384,14 @@ video {
 
 .font-webinar-heading {
   font-family: Raleway, sans-serif;
+}
+
+.font-comingsoon-body {
+  font-family: Roboto, sans-serif;
+}
+
+.font-comingsoon-heading {
+  font-family: Exo 2, sans-serif;
 }
 
 .text-2xl {
@@ -3424,6 +3437,11 @@ html {
     padding-right: 1.5rem;
   }
 
+  .sm\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .sm\:text-left {
     text-align: left;
   }
@@ -3530,6 +3548,10 @@ html {
 
   .md\:gap-0 {
     gap: 0px;
+  }
+
+  .md\:gap-10 {
+    gap: 2.5rem;
   }
 
   .md\:divide-x > :not([hidden]) ~ :not([hidden]) {
