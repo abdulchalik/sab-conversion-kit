@@ -320,7 +320,7 @@ body  { overflow-x: hidden; font-family: 'Roboto', sans-serif; }
 .cd-flip { animation: flipIn .35s ease both; }
 
 @media (max-width: 480px) {
-  .cd-num-cs  { font-size: 2rem; }
+  .cd-num-cs  { font-size: 1.6rem; }
   .cd-block-cs { min-width: 66px; padding: .75rem 1rem .65rem; }
   .cd-sep-cs  { font-size: 1.5rem; }
 }
