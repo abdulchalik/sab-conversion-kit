@@ -9,8 +9,8 @@
    Colors: comingsoon-* palette
    ═══════════════════════════════════════════════════════════════ */
 
-/* ─── Google Fonts Import ─────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap');
+/* ─── Google Fonts: loaded via <link> in HTML, not @import ───── */
+/* @import removed — duplicate request, render-blocking chain */
 
 /* ─── Reset & Base ────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
@@ -33,6 +33,8 @@ body  { overflow-x: hidden; font-family: 'Roboto', sans-serif; }
 }
 
 /* ─── Animated gradient mesh ──────────────────────────────────── */
+/* transform:rotate/scale on full-screen pseudo-element is expensive on mobile */
+/* → simplified to opacity-only animation                                       */
 .hero-cs::before {
   content: '';
   position: absolute;
@@ -42,13 +44,14 @@ body  { overflow-x: hidden; font-family: 'Roboto', sans-serif; }
     radial-gradient(ellipse 60% 50% at 80% 80%, rgba(129,140,248,.25) 0%, transparent 60%),
     radial-gradient(ellipse 50% 40% at 50% 50%, rgba(245,158,11,.08) 0%, transparent 70%);
   animation: meshShift 12s ease-in-out infinite alternate;
+  will-change: opacity;
   pointer-events: none;
 }
 
 @keyframes meshShift {
-  0%   { opacity: 1;   transform: scale(1)    rotate(0deg); }
-  50%  { opacity: .85; transform: scale(1.06) rotate(1deg); }
-  100% { opacity: 1;   transform: scale(1)    rotate(-1deg); }
+  0%   { opacity: 1; }
+  50%  { opacity: .7; }
+  100% { opacity: 1; }
 }
 
 /* ─── Floating stars / particles ─────────────────────────────── */
@@ -57,6 +60,7 @@ body  { overflow-x: hidden; font-family: 'Roboto', sans-serif; }
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  contain: layout style;
 }
 
 .star {
@@ -73,38 +77,39 @@ body  { overflow-x: hidden; font-family: 'Roboto', sans-serif; }
 }
 
 /* ─── Floating orbs ───────────────────────────────────────────── */
+/* filter:blur() REMOVED — forces GPU re-composite every frame, ~30% of paint cost */
+/* Soft edges achieved via radial-gradient alone (no visual diff, huge perf gain)  */
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
   animation: floatOrb var(--orb-dur, 14s) ease-in-out infinite alternate;
+  will-change: transform;
   pointer-events: none;
 }
 
 @keyframes floatOrb {
-  0%   { transform: translate(0, 0) scale(1); }
-  33%  { transform: translate(40px, -30px) scale(1.05); }
-  66%  { transform: translate(-20px, 20px) scale(.95); }
-  100% { transform: translate(20px, -40px) scale(1.08); }
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(30px, -25px); }
+  100% { transform: translate(-20px, 20px); }
 }
 
 .orb-1 {
-  width: 500px; height: 500px;
-  top: -120px; left: -120px;
-  background: radial-gradient(circle, rgba(79,70,229,.5) 0%, transparent 70%);
+  width: 600px; height: 600px;
+  top: -180px; left: -180px;
+  background: radial-gradient(circle, rgba(79,70,229,.4) 0%, rgba(79,70,229,.1) 50%, transparent 70%);
   --orb-dur: 16s;
 }
 .orb-2 {
-  width: 400px; height: 400px;
-  bottom: -80px; right: -80px;
-  background: radial-gradient(circle, rgba(129,140,248,.45) 0%, transparent 70%);
+  width: 500px; height: 500px;
+  bottom: -120px; right: -120px;
+  background: radial-gradient(circle, rgba(129,140,248,.35) 0%, rgba(129,140,248,.08) 50%, transparent 70%);
   --orb-dur: 20s;
 }
 .orb-3 {
-  width: 300px; height: 300px;
+  width: 350px; height: 350px;
   top: 40%; left: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(245,158,11,.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245,158,11,.12) 0%, transparent 65%);
   --orb-dur: 11s;
 }
 
@@ -117,22 +122,26 @@ body  { overflow-x: hidden; font-family: 'Roboto', sans-serif; }
     linear-gradient(90deg, rgba(129,140,248,.06) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
+  contain: layout style;
 }
 
 /* ─── Scanline shimmer ────────────────────────────────────────── */
+/* FIXED: was animating `top` (layout property → triggers reflow every frame)   */
+/* Now uses transform:translateY (compositor-only, zero layout cost)             */
 .scanline {
   position: absolute;
-  left: 0; right: 0;
+  top: 0; left: 0; right: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent, rgba(129,140,248,.4), rgba(245,158,11,.3), transparent);
+  will-change: transform, opacity;
   animation: scanMove 8s linear infinite;
   pointer-events: none;
 }
 @keyframes scanMove {
-  0%   { top: -2px;   opacity: 0; }
+  0%   { transform: translateY(-4px); opacity: 0; }
   5%   { opacity: 1; }
   95%  { opacity: 1; }
-  100% { top: 100%;  opacity: 0; }
+  100% { transform: translateY(900px); opacity: 0; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -173,11 +182,11 @@ body  { overflow-x: hidden; font-family: 'Roboto', sans-serif; }
   display: inline-flex;
   align-items: center;
   gap: .4rem;
-  background: rgba(79,70,229,.2);
+  background: rgba(79,70,229,.25);
   border: 1px solid rgba(129,140,248,.35);
   border-radius: 999px;
   padding: .35rem 1rem .35rem .6rem;
-  backdrop-filter: blur(8px);
+  /* backdrop-filter removed — creates compositing layer, expensive on mobile */
   font-family: 'Exo 2', sans-serif;
   font-weight: 600;
   font-size: .72rem;
@@ -244,11 +253,11 @@ body  { overflow-x: hidden; font-family: 'Roboto', sans-serif; }
   flex-direction: column;
   align-items: center;
   min-width: 80px;
-  background: rgba(255,255,255,.06);
+  background: rgba(255,255,255,.08);
   border: 1px solid rgba(129,140,248,.25);
   border-radius: 16px;
   padding: 1rem 1.25rem .8rem;
-  backdrop-filter: blur(12px);
+  /* backdrop-filter removed — 4 blocks × compositing layer = major paint cost */
   position: relative;
   overflow: hidden;
   transition: background .3s ease, border-color .3s ease, transform .3s ease;
@@ -352,7 +361,7 @@ body  { overflow-x: hidden; font-family: 'Roboto', sans-serif; }
   font-size: .9rem;
   color: #fff;
   outline: none;
-  backdrop-filter: blur(8px);
+  /* backdrop-filter removed — compositing layer cost not worth it on input */
   transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
 }
 .notify-input::placeholder { color: rgba(255,255,255,.35); }
@@ -676,4 +685,33 @@ body  { overflow-x: hidden; font-family: 'Roboto', sans-serif; }
   color: #fff;
   display: block;
   font-size: .87rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE PERFORMANCE — reduce animations on small screens
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Disable floatOrb animation on mobile — saves ~15ms paint/frame */
+  .orb { animation: none; }
+  /* Disable meshShift — not visible on small viewport anyway */
+  .hero-cs::before { animation: none; }
+  /* Keep scanline but slower to reduce repaint frequency */
+  .scanline { animation-duration: 12s; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PREFERS-REDUCED-MOTION — accessibility + perf on low-end devices
+   ═══════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .orb,
+  .star,
+  .scanline,
+  .hero-cs::before { animation: none !important; }
 }

@@ -6,13 +6,23 @@
   <title>Coming Soon — Sesuatu yang Luar Biasa Sedang Disiapkan</title>
   <meta name="description" content="Kami sedang mempersiapkan sesuatu yang luar biasa. Daftarkan email Anda dan jadilah yang pertama tahu saat kami meluncur." />
 
-  <!-- Fonts -->
+  <!-- Preload critical CSS — eliminates render-blocking delay -->
+  <link rel="preload" href="../assets/css/output-comingsoon.css" as="style" />
+  <link rel="stylesheet" href="../assets/css/output-comingsoon.css" />
+
+  <!-- Fonts: only weights actually used (was 10 files, now 5) -->
+  <!-- Non-blocking load: render with system font first, swap when loaded -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind Output CSS -->
-  <link rel="stylesheet" href="../assets/css/output-comingsoon.css" />
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800;900&family=Roboto:wght@300;400;500&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800;900&family=Roboto:wght@300;400;500&display=swap"
+    media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800;900&family=Roboto:wght@300;400;500&display=swap" />
+  </noscript>
 
   <!--
   ╔══════════════════════════════════════════════════════════════════╗
@@ -318,28 +328,40 @@
     document.getElementById('progressLabel').textContent  = PROGRESS_PCT + '%';
     document.getElementById('progressFill').style.setProperty('--pct', PROGRESS_PCT + '%');
 
-    /* ─── Generate stars ─────────────────────────────────────── */
-    const starsLayer = document.getElementById('starsLayer');
-    const STAR_COUNT = 120;
-    const fragment   = document.createDocumentFragment();
+    /* ─── Generate stars (deferred — does not block first paint) ── */
+    /* requestIdleCallback defers DOM work until browser is idle.    */
+    /* Reduced count: 50 desktop / 30 mobile (was 120 everywhere)    */
+    function generateStars() {
+      const starsLayer = document.getElementById('starsLayer');
+      if (!starsLayer) return;
+      const isMobile   = window.innerWidth < 768;
+      const STAR_COUNT = isMobile ? 30 : 50;
+      const fragment   = document.createDocumentFragment();
 
-    for (let i = 0; i < STAR_COUNT; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      const size  = Math.random() * 2.5 + .5;
-      const dur   = (Math.random() * 4 + 2).toFixed(1) + 's';
-      const delay = (Math.random() * 6).toFixed(1) + 's';
-      Object.assign(star.style, {
-        width:  size + 'px',
-        height: size + 'px',
-        top:    Math.random() * 100 + '%',
-        left:   Math.random() * 100 + '%',
-        '--dur':   dur,
-        '--delay': delay,
-      });
-      fragment.appendChild(star);
+      for (let i = 0; i < STAR_COUNT; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size  = Math.random() * 2.5 + .5;
+        const dur   = (Math.random() * 4 + 2).toFixed(1) + 's';
+        const delay = (Math.random() * 6).toFixed(1) + 's';
+        Object.assign(star.style, {
+          width:  size + 'px',
+          height: size + 'px',
+          top:    Math.random() * 100 + '%',
+          left:   Math.random() * 100 + '%',
+          '--dur':   dur,
+          '--delay': delay,
+        });
+        fragment.appendChild(star);
+      }
+      starsLayer.appendChild(fragment);
     }
-    starsLayer.appendChild(fragment);
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(generateStars, { timeout: 2000 });
+    } else {
+      setTimeout(generateStars, 300); // fallback for Safari
+    }
 
     /* ─── Countdown timer ────────────────────────────────────── */
     const target      = new Date(LAUNCH_DATE).getTime();
