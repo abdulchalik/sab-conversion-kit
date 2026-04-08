@@ -61,6 +61,8 @@ body  { overflow-x: hidden; font-family: 'Open Sans', sans-serif; }
 #navbar.scrolled .nav-link { color: #042F2E; }
 #navbar.scrolled .nav-link:hover { color: #0F766E; }
 #navbar.scrolled .hamburger-line { background: #042F2E; }
+#navbar.scrolled .navbar-brand-text { color: #042F2E; }
+#navbar.scrolled .navbar-brand-accent { color: #0F766E; }
 
 .nav-link {
   font-family: 'Open Sans', sans-serif;
@@ -798,3 +800,9 @@ body  { overflow-x: hidden; font-family: 'Open Sans', sans-serif; }
   display: none;
 }
 .field-error.visible { display: block; }
+
+
+#navbar.scrolled .text-webinar-light {
+  --tw-text-opacity: 1;
+  color: rgb(4 47 46 / var(--tw-text-opacity));
+}
