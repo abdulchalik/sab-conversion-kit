@@ -11,7 +11,9 @@
     "dev:ecommerce": "tailwindcss -i ./assets/css/main-ecommerce.css -o ./assets/css/output-ecommerce.css --watch",
     "build:ecommerce": "tailwindcss -i ./assets/css/main-ecommerce.css -o ./assets/css/output-ecommerce.css --minify",
     "dev:portfolio": "tailwindcss -i ./assets/css/main-portfolio.css -o ./assets/css/output-portfolio.css --watch",
-    "build:portfolio": "tailwindcss -i ./assets/css/main-portfolio.css -o ./assets/css/output-portfolio.css --minify"
+    "build:portfolio": "tailwindcss -i ./assets/css/main-portfolio.css -o ./assets/css/output-portfolio.css --minify",
+    "dev:webinar": "tailwindcss -i ./assets/css/main-webinar.css -o ./assets/css/output-webinar.css --watch",
+    "build:webinar": "tailwindcss -i ./assets/css/main-webinar.css -o ./assets/css/output-webinar.css --minify"
   },
   "repository": {
     "type": "git",
