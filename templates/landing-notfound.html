@@ -13,14 +13,20 @@
   <!-- Fonts: Bebas Neue (heading) + Roboto Condensed (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!--
+    font-display=optional → font TIDAK swap setelah first-render.
+    Jika font sudah ada di cache browser (kunjungan kedua), tampil sempurna.
+    Jika belum, fallback metric-matched dipakai → CLS = 0.
+    Ini trade-off yang tepat: prioritas stabilitas layout vs. font baru.
+  -->
   <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;600;700&display=swap" />
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;600;700&display=optional" />
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;600;700&display=optional"
     media="print" onload="this.media='all'" />
   <noscript>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;600;700&display=swap" />
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;600;700&display=optional" />
   </noscript>
 
   <!--
@@ -101,9 +107,14 @@
         <div class="num-404" data-text="404" aria-label="Error 404">404</div>
 
         <!-- Astronaut Illustration -->
-        <div class="astronaut-wrap mt-[-20px]">
+        <div class="astronaut-wrap">
           <div class="orbit-ring" aria-hidden="true"></div>
-          <svg class="astronaut-svg" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Astronot yang tersesat">
+          <!--
+            width + height wajib ada → browser reserve space sebelum SVG diparse.
+            Tanpa ini, SVG collapse ke 0 lalu expand = CLS.
+            Nilai 240x264 = aspect ratio viewBox 200:220 dipertahankan.
+          -->
+          <svg class="astronaut-svg" viewBox="0 0 200 220" width="240" height="264" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Astronot yang tersesat">
             <!-- Body suit -->
             <ellipse cx="100" cy="145" rx="42" ry="50" fill="#F87171"/>
             <ellipse cx="100" cy="145" rx="38" ry="46" fill="#FEF2F2"/>
@@ -147,7 +158,11 @@
         </div>
 
         <!-- Fun tagline below illustration -->
-        <p class="font-notfound-body text-notfound-secondary text-center lg:text-left text-sm tracking-wide" aria-hidden="true">
+        <!--
+          .fun-tagline memiliki min-height di CSS → space sudah di-reserve.
+          JS hanya mengubah textContent (tidak menambah/hapus elemen) → CLS = 0.
+        -->
+        <p class="fun-tagline font-notfound-body text-notfound-secondary text-center lg:text-left text-sm tracking-wide">
           Astronot kami juga sedang mencari halaman ini... 🚀
         </p>
 
@@ -223,12 +238,20 @@
         <hr class="divider-nf mb-5" aria-hidden="true"/>
 
         <!-- Quick Links -->
+        <!--
+          PRE-RENDERED sebagai static HTML → tidak ada CLS dari JS injection.
+          JS hanya UPDATE href + label dari QUICK_LINKS config (tidak insert/remove elemen).
+          Default values match QUICK_LINKS array di <head> config.
+        -->
         <div>
           <p class="font-notfound-body text-xs text-notfound-secondary tracking-widest uppercase mb-3 mt-3 opacity-70">
             Mungkin kamu mencari ini?
           </p>
           <div class="flex flex-wrap gap-2" id="js-quick-links">
-            <!-- Rendered by JS -->
+            <a href="/" class="quick-link" data-ql="0">🏠 Beranda</a>
+            <a href="/products" class="quick-link" data-ql="1">📦 Produk</a>
+            <a href="/blog" class="quick-link" data-ql="2">📖 Blog</a>
+            <a href="/contact" class="quick-link" data-ql="3">📞 Kontak</a>
           </div>
         </div>
 
@@ -291,14 +314,18 @@
     });
   }
 
-  /* ─── Quick links ───────────────────────────────────────────── */
+  /* ─── Quick links ───────────────────────────────────────────────
+     UPDATE ONLY — tidak insert/remove elemen → CLS = 0.
+     Elemen sudah pre-rendered di HTML, JS hanya sync href + label
+     dari QUICK_LINKS config jika berbeda dari default.
+  ─────────────────────────────────────────────────────────────── */
   if (quickLinksWrap && QUICK_LINKS && QUICK_LINKS.length) {
-    QUICK_LINKS.forEach(function (link) {
-      const a = document.createElement('a');
-      a.href = link.href;
-      a.className = 'quick-link';
-      a.textContent = link.label;
-      quickLinksWrap.appendChild(a);
+    const qlEls = quickLinksWrap.querySelectorAll('[data-ql]');
+    QUICK_LINKS.forEach(function (link, i) {
+      if (qlEls[i]) {
+        qlEls[i].href        = link.href;
+        qlEls[i].textContent = link.label;
+      }
     });
   }
 
@@ -339,7 +366,8 @@
   ];
 
   let msgIdx = 0;
-  const msgEl = document.querySelector('.astronaut-svg + p, .astronaut-wrap + p');
+  /* .fun-tagline sudah punya min-height di CSS → textContent change = no CLS */
+  const msgEl = document.querySelector('.fun-tagline');
   if (msgEl) {
     setInterval(function () {
       msgIdx = (msgIdx + 1) % funMessages.length;
