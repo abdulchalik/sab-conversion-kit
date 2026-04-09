@@ -55,6 +55,37 @@ module.exports = {
           accent: "#F97316",
           light: "#FEF2F2",
           dark: "#450A0A"
+        },
+        dapurswindon: {
+          // Browns
+          "brown-deep":  "#3B1F0E",
+          "brown":       "#5C3317",
+          "brown-mid":   "#7A4A2A",
+          "brown-warm":  "#8B5E3C",
+          // Creams
+          "cream":       "#FDF6EC",
+          "cream-mid":   "#FAF0E2",
+          "cream-dark":  "#F5E6D0",
+          // Gold
+          "gold":        "#C9A84C",
+          "gold-light":  "#E0C97A",
+          "gold-dark":   "#A88B3A",
+          // Rose
+          "rose":        "#D4A5A5",
+          "rose-light":  "#E8C8C8",
+          "rose-pale":   "#F2DEDE",
+          // Text
+          "text-dark":   "#2A1508",
+          "text-mid":    "#5C3D24",
+          "text-light":  "#8B6E57",
+          // White
+          "white":       "#FFFDF9",
+          // Semantic aliases
+          primary:       "#5C3317",   // brown
+          secondary:     "#C9A84C",   // gold
+          accent:        "#D4A5A5",   // rose
+          light:         "#FDF6EC",   // cream
+          dark:          "#3B1F0E",   // brown-deep
         }
       },
       fontFamily: {
@@ -78,7 +109,11 @@ module.exports = {
         "thankyou-body": ["Nunito", "sans-serif"],
         // 404 Not Found — bold, impactful, ekspresif
         "notfound-heading": ["Bebas Neue", "cursive"],
-        "notfound-body": ["Roboto Condensed", "sans-serif"]
+        "notfound-body": ["Roboto Condensed", "sans-serif"],
+        // Dapur Swindon — elegan, hangat, artisanal
+        "dapurswindon-heading": ["Playfair Display", "serif"],
+        "dapurswindon-display": ["Cormorant Garamond", "serif"],
+        "dapurswindon-body": ["Jost", "sans-serif"]
       }
     },
   },
