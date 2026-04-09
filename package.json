@@ -21,7 +21,9 @@
     "dev:notfound": "tailwindcss -i ./assets/css/main-notfound.css -o ./assets/css/output-notfound.css --watch",
     "build:notfound": "tailwindcss -i ./assets/css/main-notfound.css -o ./assets/css/output-notfound.css --minify",
     "dev:dapurswindon": "tailwindcss -i ./assets/css/main-dapurswindon.css -o ./assets/css/output-dapurswindon.css --watch",
-    "build:dapurswindon": "tailwindcss -i ./assets/css/main-dapurswindon.css -o ./assets/css/output-dapurswindon.css --minify"
+    "build:dapurswindon": "tailwindcss -i ./assets/css/main-dapurswindon.css -o ./assets/css/output-dapurswindon.css --minify",
+    "dev:sablanding": "tailwindcss -i ./assets/css/main-sablanding.css -o ./assets/css/output-sablanding.css --watch",
+    "build:sablanding": "tailwindcss -i ./assets/css/main-sablanding.css -o ./assets/css/output-sablanding.css --minify"
   },
   "repository": {
     "type": "git",

@@ -56,6 +56,32 @@ module.exports = {
           light: "#FEF2F2",
           dark: "#450A0A"
         },
+        sablanding: {
+          // Brand Blue
+          "primary":        "#234292",   // SAB brand blue — CTAs, headings
+          "primary-light":  "#2f4b8e",   // hover / link states
+          "primary-dark":   "#1a3070",   // pressed / deep contrast
+          // Brand Green
+          "secondary":      "#03C383",   // SAB brand green — highlights, badges
+          "secondary-light": "#05e89b",  // lighter green for hover
+          "secondary-dark": "#029e69",   // deeper green
+          // Action Blue
+          "action":         "#409EFF",   // secondary action buttons, links
+          // Neutrals
+          "dark":           "#32373c",   // dark backgrounds, button fills
+          "text":           "#3c4457",   // body text
+          "text-light":     "#6b7280",   // muted / secondary text
+          "light":          "#F4F6FA",   // page / section backgrounds
+          "border":         "#E5E8EF",   // borders, dividers
+          "white":          "#ffffff",
+          "black":          "#000000",
+          // Semantic aliases
+          primary:          "#234292",
+          secondary:        "#03C383",
+          accent:           "#409EFF",
+          light:            "#F4F6FA",
+          dark:             "#32373c",
+        },
         dapurswindon: {
           // Browns
           "brown-deep":  "#3B1F0E",
@@ -110,6 +136,9 @@ module.exports = {
         // 404 Not Found — bold, impactful, ekspresif
         "notfound-heading": ["Bebas Neue", "cursive"],
         "notfound-body": ["Roboto Condensed", "sans-serif"],
+        // SAB Landing — bersih, profesional, korporat
+        "sablanding-heading": ["Open Sans", "sans-serif"],
+        "sablanding-body": ["Open Sans", "sans-serif"],
         // Dapur Swindon — elegan, hangat, artisanal
         "dapurswindon-heading": ["Playfair Display", "serif"],
         "dapurswindon-display": ["Cormorant Garamond", "serif"],
