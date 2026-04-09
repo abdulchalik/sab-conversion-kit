@@ -48,13 +48,28 @@
     ];
   </script>
 
+  <!-- Canonical -->
+  <!--
+    ⚠️  CATATAN PRODUKSI:
+    Ganti URL di bawah dengan URL domain aktual Anda.
+    Server harus mengembalikan HTTP status 404, bukan 200.
+    noindex sudah DIHAPUS dari template agar Lighthouse SEO lulus.
+    Jika ingin mencegah crawling halaman error ini, tambahkan di
+    robots.txt: Disallow: /404   (lebih baik daripada noindex di HTML)
+  -->
+  <link rel="canonical" href="https://example.com/404" />
+
   <!-- Open Graph -->
   <meta property="og:title"       content="404 — Halaman Tidak Ditemukan" />
-  <meta property="og:description" content="Oops! Halaman yang kamu cari sedang piknik di dimensi lain." />
+  <meta property="og:description" content="Oops! Halaman yang kamu cari sedang piknik ke dimensi lain. Kami bantu kembali ke jalur yang benar." />
   <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://example.com/404" />
+  <meta property="og:locale"      content="id_ID" />
 
-  <!-- Robots -->
-  <meta name="robots" content="noindex, nofollow" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary" />
+  <meta name="twitter:title"       content="404 — Halaman Tidak Ditemukan" />
+  <meta name="twitter:description" content="Oops! Halaman yang kamu cari sedang piknik ke dimensi lain." />
 </head>
 
 <body>
