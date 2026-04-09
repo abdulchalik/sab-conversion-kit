@@ -17,7 +17,9 @@
     "dev:comingsoon": "tailwindcss -i ./assets/css/main-comingsoon.css -o ./assets/css/output-comingsoon.css --watch",
     "build:comingsoon": "tailwindcss -i ./assets/css/main-comingsoon.css -o ./assets/css/output-comingsoon.css --minify",
     "dev:thankyou": "tailwindcss -i ./assets/css/main-thankyou.css -o ./assets/css/output-thankyou.css --watch",
-    "build:thankyou": "tailwindcss -i ./assets/css/main-thankyou.css -o ./assets/css/output-thankyou.css --minify"
+    "build:thankyou": "tailwindcss -i ./assets/css/main-thankyou.css -o ./assets/css/output-thankyou.css --minify",
+    "dev:notfound": "tailwindcss -i ./assets/css/main-notfound.css -o ./assets/css/output-notfound.css --watch",
+    "build:notfound": "tailwindcss -i ./assets/css/main-notfound.css -o ./assets/css/output-notfound.css --minify"
   },
   "repository": {
     "type": "git",
