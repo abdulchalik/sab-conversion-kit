@@ -672,4 +672,11 @@ body { overflow-x: hidden; }
   .case-metric-number {
     font-size: 1.25rem;
   }
+  .badge-left{
+    left:-2.5rem !important
+  }
+  .badge-right{
+    right:-3.5rem !important;
+    bottom: -2rem !important;
+  }
 }
