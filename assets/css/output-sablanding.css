@@ -3647,7 +3647,8 @@ body {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #03C383;
+  color: #027A52;
+  /* darkened from #03C383 → contrast 5.4:1 on white ✓ */
   margin-bottom: 1rem;
 }
 
@@ -3655,17 +3656,17 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #03C383;
+  background: #027A52;
   animation: glow-green 2.2s ease-in-out infinite;
 }
 
 @keyframes glow-green {
   0%, 100% {
-    box-shadow: 0 0 6px rgba(3,195,131,0.5);
+    box-shadow: 0 0 6px rgba(2,122,82,0.5);
   }
 
   50%       {
-    box-shadow: 0 0 14px rgba(3,195,131,0.9);
+    box-shadow: 0 0 14px rgba(2,122,82,0.9);
   }
 }
 
@@ -3862,20 +3863,26 @@ body {
 }
 
 .feature-item.dimmed {
-  opacity: 0.35;
+  opacity: 0.55;
 }
+
+/* raised from 0.35 → passes contrast at pricing bg */
 
 .feature-check {
-  color: #03C383;
+  color: #027A52;
   flex-shrink: 0;
   margin-top: 1px;
 }
 
+/* darkened for contrast */
+
 .feature-cross {
-  color: #d1d5db;
+  color: #9ca3af;
   flex-shrink: 0;
   margin-top: 1px;
 }
+
+/* lightened from #d1d5db */
 
 /* ─── CTA / Form ─────────────────────────────────────────── */
 
@@ -4263,15 +4270,18 @@ body {
 /* ─── Footer ─────────────────────────────────────────────── */
 
 .footer-link {
-  color: #6b7280;
+  color: #9CA3AF;
+  /* lightened from #6b7280 → 4.8:1 on dark bg #32373c ✓ */
   font-size: 0.875rem;
   transition: color .2s;
   text-decoration: none;
 }
 
 .footer-link:hover {
-  color: #234292;
+  color: #93C5FD;
 }
+
+/* blue-300: 6.1:1 on dark bg ✓ */
 
 .social-icon {
   width: 38px;
@@ -4280,17 +4290,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(35,66,146,0.07);
-  border: 1px solid rgba(35,66,146,0.12);
-  color: #6b7280;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #9CA3AF;
+  /* 4.8:1 on dark bg ✓ */
   transition: background .2s, color .2s, transform .2s, box-shadow .2s;
 }
 
 .social-icon:hover {
-  background: rgba(35,66,146,0.13);
-  color: #234292;
+  background: rgba(255,255,255,0.14);
+  color: #93C5FD;
+  /* blue-300: 6.1:1 on dark bg ✓ */
   transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(35,66,146,0.14);
+  box-shadow: 0 6px 16px rgba(255,255,255,0.08);
 }
 
 /* ─── Headline line-height fix (desktop) ─────────────────── */
