@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  COMPONENT: faq-accordion                            ║
+  ║  Style: Clean white cards, animated expand/collapse  ║
+  ║  Source: landing-webinar.html (FAQ section)          ║
+  ║  Customise: FAQ_ITEMS array in <script> below.       ║
+  ╚══════════════════════════════════════════════════════╝
+-->
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component: FAQ Accordion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-primary:   #234292;
+      --color-secondary: #03C383;
+      --color-dark:      #0D1B3E;
+      --color-text:      #3D4F6E;
+      --color-text-light:#6B7DA0;
+      --color-border:    #E4EBF5;
+      --color-bg:        #F4F7FF;
+    }
+    body { font-family: 'Open Sans', sans-serif; margin: 0; background: #fff; }
+
+    .faq-section { background: #fff; padding: 5rem 0; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--color-primary);
+    }
+    .section-label-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-secondary); }
+    .grad-text {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* ── FAQ item ── */
+    .faq-item {
+      border: 1.5px solid var(--color-border);
+      border-radius: .875rem;
+      overflow: hidden;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .faq-item.open {
+      border-color: rgba(35,66,146,.25);
+      box-shadow: 0 4px 20px rgba(35,66,146,.08);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 1.125rem 1.25rem;
+      background: none; border: none; cursor: pointer;
+      text-align: left;
+      font-family: inherit; font-size: .9375rem; font-weight: 700;
+      color: var(--color-dark);
+      transition: color .2s;
+    }
+    .faq-item.open .faq-trigger { color: var(--color-primary); }
+
+    /* Chevron */
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--color-bg);
+      color: var(--color-text-light);
+      transition: background .25s, color .25s, transform .35s;
+    }
+    .faq-item.open .faq-chevron {
+      background: var(--color-primary);
+      color: #fff;
+      transform: rotate(180deg);
+    }
+
+    /* Body (animated) */
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .38s cubic-bezier(.4,0,.2,1);
+    }
+    .faq-body-inner {
+      padding: 0 1.25rem 1.125rem;
+      font-size: .9rem;
+      color: var(--color-text);
+      line-height: 1.75;
+    }
+
+    /* Reveal */
+    .anim-fade { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
+    .anim-fade.anim-in { opacity: 1; transform: translateY(0); }
+    .d-100 { transition-delay: .1s; }
+
+    /* CTA */
+    .faq-cta {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--color-primary); color: #fff;
+      font-weight: 700; border-radius: .75rem;
+      padding: .875rem 1.5rem; text-decoration: none;
+      transition: opacity .2s, transform .15s;
+    }
+    .faq-cta:hover { opacity: .9; transform: translateY(-1px); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- FAQ ACCORDION COMPONENT                                 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="faq" class="faq-section">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="section-label justify-center anim-fade">
+        <span class="section-label-dot"></span>
+        FAQ
+      </div>
+      <h2 class="font-extrabold text-3xl lg:text-4xl mt-3 anim-fade d-100"
+          style="color: var(--color-dark)">
+        Pertanyaan yang <span class="grad-text">Sering Diajukan</span>
+      </h2>
+    </div>
+
+    <!-- Accordion list -->
+    <div class="space-y-3" id="faqList">
+      <!-- Injected by JS -->
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-12 anim-fade">
+      <p class="mb-4" style="color: var(--color-text-light)">Masih ada pertanyaan? Kami siap membantu.</p>
+      <a href="https://wa.me/6282177336889?text=Halo%20SAB%2C%20saya%20punya%20pertanyaan."
+         target="_blank" rel="noopener" class="faq-cta">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Tanya via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+<!-- / FAQ ACCORDION COMPONENT -->
+
+<script>
+  // ── KONFIGURASI — tambah/ubah FAQ di sini ───────────────────
+  const FAQ_ITEMS = [
+    {
+      q: 'Apakah ada konsultasi gratis sebelum memulai?',
+      a: 'Ya! Setiap klien baru mendapatkan sesi konsultasi gratis 1 jam dengan tim strategi kami. Kami akan menganalisis bisnis Anda, menilai peluang digital, dan memberikan rekomendasi awal tanpa biaya apapun.',
+    },
+    {
+      q: 'Berapa lama kontrak minimum yang diwajibkan?',
+      a: 'Kontrak minimum bervariasi per paket: Starter membutuhkan komitmen 3 bulan, Growth 6 bulan, dan Enterprise bisa dikustomisasi. Durasi minimum ini diperlukan agar strategi digital marketing dapat terukur dan memberikan hasil optimal.',
+    },
+    {
+      q: 'Bagaimana cara SAB mengukur keberhasilan kampanye?',
+      a: 'Kami menggunakan KPI yang disepakati bersama di awal, misalnya jumlah leads per bulan, cost per lead (CPL), conversion rate, organic traffic growth, dan ROI iklan. Laporan dikirim setiap minggu atau dua minggu sekali tergantung paket.',
+    },
+    {
+      q: 'Apakah SAB bisa menangani bisnis di luar Jakarta?',
+      a: 'Tentu! Kami melayani klien di seluruh Indonesia dan bahkan internasional. Komunikasi dilakukan via WhatsApp, Zoom meeting, dan email. Lokasi tidak menjadi hambatan karena semua pekerjaan bersifat digital.',
+    },
+    {
+      q: 'Apa yang terjadi jika KPI tidak tercapai?',
+      a: 'Pada Paket Enterprise, kami memberikan garansi KPI tertulis. Jika target tidak tercapai dalam periode yang disepakati, kami akan memberikan kompensasi dalam bentuk layanan tambahan atau perpanjangan kontrak tanpa biaya tambahan.',
+    },
+    {
+      q: 'Apakah saya bisa mengubah paket di tengah kontrak?',
+      a: 'Ya, upgrade paket bisa dilakukan kapan saja. Downgrade paket bisa dilakukan setelah periode kontrak awal selesai. Tim kami akan membantu transisi paket dengan lancar tanpa kehilangan momentum kampanye yang sedang berjalan.',
+    },
+  ];
+  // ─────────────────────────────────────────────────────────────
+
+  const CHEVRON = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+  </svg>`;
+
+  const list = document.getElementById('faqList');
+
+  FAQ_ITEMS.forEach((item, i) => {
+    const el = document.createElement('div');
+    el.className = 'faq-item anim-fade';
+    if (i === 0) el.classList.add('open');
+    el.style.transitionDelay = (i * 60) + 'ms';
+
+    el.innerHTML = `
+      <button class="faq-trigger" aria-expanded="${i === 0}" aria-controls="faq-body-${i}">
+        <span>${item.q}</span>
+        <span class="faq-chevron">${CHEVRON}</span>
+      </button>
+      <div class="faq-body" id="faq-body-${i}" role="region">
+        <div class="faq-body-inner">${item.a}</div>
+      </div>`;
+
+    list.appendChild(el);
+
+    const trigger = el.querySelector('.faq-trigger');
+    const body    = el.querySelector('.faq-body');
+    const inner   = el.querySelector('.faq-body-inner');
+
+    // Set open height on first item
+    if (i === 0) body.style.maxHeight = inner.scrollHeight + 'px';
+
+    trigger.addEventListener('click', () => {
+      const isOpen = el.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen);
+      body.style.maxHeight = isOpen ? inner.scrollHeight + 'px' : '0';
+    });
+  });
+
+  // Reveal
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.anim-fade').forEach(el => obs.observe(el));
+  } else { document.querySelectorAll('.anim-fade').forEach(el => el.classList.add('anim-in')); }
+</script>
+</body>
+</html>

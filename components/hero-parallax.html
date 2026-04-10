@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  COMPONENT: hero-parallax                            ║
+  ║  Style: Dark theme, full-screen, centered content    ║
+  ║  Source: landing-service.html                        ║
+  ║  Usage: Copy <section id="hero"> + styles + script.  ║
+  ║  Customise: Headlines, CTA text, metrics strip.      ║
+  ╚══════════════════════════════════════════════════════╝
+-->
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component: Hero Parallax</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-bg:        #060C1A;
+      --color-surface:   #0D1529;
+      --color-accent:    #F59E0B;
+      --color-grad-from: #6366F1;
+      --color-grad-to:   #14B8A6;
+      --color-light:     #F8FAFC;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--color-bg);
+      color: #cbd5e1;
+      overflow-x: hidden;
+    }
+
+    /* ── Hero section ── */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Parallax blob layers */
+    .hero-blob-1, .hero-blob-2, .hero-blob-3 {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      will-change: transform;
+    }
+    .hero-blob-1 {
+      width: 700px; height: 700px;
+      top: -200px; right: -150px;
+      background: radial-gradient(circle, rgba(99,102,241,.18) 0%, transparent 70%);
+    }
+    .hero-blob-2 {
+      width: 500px; height: 500px;
+      bottom: -100px; left: -100px;
+      background: radial-gradient(circle, rgba(20,184,166,.14) 0%, transparent 70%);
+    }
+    .hero-blob-3 {
+      width: 350px; height: 350px;
+      top: 30%; left: 35%;
+      background: radial-gradient(circle, rgba(245,158,11,.06) 0%, transparent 70%);
+    }
+
+    /* Dot grid overlay */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+
+    /* Gradient text */
+    .grad-text {
+      background: linear-gradient(135deg, var(--color-grad-from), var(--color-grad-to));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .grad-accent {
+      background: linear-gradient(90deg, #F59E0B, #FBBF24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--color-accent);
+      color: #000;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      border-radius: .75rem;
+      text-decoration: none;
+      transition: opacity .2s, transform .15s, box-shadow .2s;
+    }
+    .btn-primary:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,.4); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,.06);
+      border: 1.5px solid rgba(255,255,255,.15);
+      color: #e2e8f0;
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      border-radius: .75rem;
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); }
+
+    /* Badge */
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(245,158,11,.08);
+      border: 1px solid rgba(245,158,11,.2);
+      color: #F59E0B;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      padding: .4rem 1rem;
+      border-radius: 9999px;
+    }
+
+    /* Floating decorations */
+    .float-anim   { animation: floatA 6s ease-in-out infinite; }
+    .float-anim-2 { animation: floatA 8s ease-in-out infinite reverse; }
+    @keyframes floatA {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+      opacity: .4;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* Reveal animations */
+    .anim-fade { opacity: 0; transform: translateY(20px); transition: opacity .7s, transform .7s; }
+    .anim-up   { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
+    .anim-fade.anim-in, .anim-up.anim-in { opacity: 1; transform: translateY(0); }
+    .d-100 { transition-delay: .1s; }
+    .d-200 { transition-delay: .2s; }
+    .d-300 { transition-delay: .3s; }
+    .d-400 { transition-delay: .4s; }
+
+    /* Metrics strip */
+    .metrics-strip { border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .metric-divider { border-left: 1px solid rgba(255,255,255,.06); border-right: 1px solid rgba(255,255,255,.06); }
+
+    h1 { font-family: 'Sora', sans-serif; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- HERO PARALLAX COMPONENT                                 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="hero" class="hero-section">
+
+  <!-- Parallax Layers -->
+  <div class="hero-blob-1" data-parallax-speed="0.28"></div>
+  <div class="hero-blob-2" data-parallax-speed="0.18"></div>
+  <div class="hero-blob-3" data-parallax-speed="0.22"></div>
+  <div class="hero-grid"></div>
+
+  <!-- Floating Decorations -->
+  <div class="absolute top-28 right-8 lg:right-32 float-anim opacity-25 pointer-events-none">
+    <div class="w-20 h-20 border border-amber-400/30 rounded-2xl rotate-12"></div>
+  </div>
+  <div class="absolute top-40 right-16 lg:right-48 float-anim-2 opacity-20 pointer-events-none" style="animation-delay:2s">
+    <div class="w-8 h-8 bg-amber-400/25 rounded-full"></div>
+  </div>
+  <div class="absolute bottom-1/4 left-8 lg:left-20 float-anim opacity-15 pointer-events-none" style="animation-delay:1s">
+    <div class="w-14 h-14 border border-indigo-400/25 rounded-full"></div>
+  </div>
+  <div class="absolute top-1/3 left-1/4 float-anim-2 opacity-10 pointer-events-none" style="animation-delay:3s">
+    <div class="w-10 h-10 border border-emerald-400/20 rounded-lg rotate-45"></div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 min-h-screen
+              flex flex-col items-center justify-center text-center">
+
+    <!-- Badge -->
+    <div class="hero-badge anim-fade mb-8">
+      <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse flex-shrink-0"></span>
+      ✦ &nbsp;Dipercaya 500+ Brand Terkemuka di Indonesia
+    </div>
+
+    <!-- Headline -->
+    <h1 class="anim-fade d-100 font-black text-4xl sm:text-5xl lg:text-7xl leading-tight
+               tracking-tight max-w-5xl mb-6" style="color: var(--color-light)">
+      Kami Membangun Pengalaman Digital yang
+      <span class="grad-text"> Menghasilkan Pertumbuhan Nyata</span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="anim-fade d-200 text-slate-400 text-lg md:text-xl max-w-2xl leading-relaxed mb-10">
+      Full-service digital agency dengan pendekatan berbasis data, desain premium,
+      dan strategi eksekusi yang terbukti meningkatkan revenue klien kami rata-rata
+      <span class="grad-accent font-semibold">3.7× dalam 6 bulan</span>.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="anim-fade d-300 flex flex-col sm:flex-row gap-4 justify-center mb-16">
+      <a href="#contact" class="btn-primary px-8 py-4 text-base rounded-xl">
+        Mulai Project Gratis →
+      </a>
+      <a href="#services" class="btn-outline px-8 py-4 text-base rounded-xl">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        Lihat Layanan Kami
+      </a>
+    </div>
+
+    <!-- Metrics Strip -->
+    <div class="anim-up d-400 metrics-strip grid grid-cols-3 gap-4 sm:gap-8 max-w-lg w-full py-6">
+      <div class="text-center">
+        <div class="font-black text-2xl sm:text-3xl" style="font-family:'Sora',sans-serif; color: var(--color-light)">500+</div>
+        <div class="text-slate-500 text-xs sm:text-sm mt-1">Project Selesai</div>
+      </div>
+      <div class="text-center metric-divider px-4">
+        <div class="font-black text-2xl sm:text-3xl" style="font-family:'Sora',sans-serif; color: var(--color-light)">98%</div>
+        <div class="text-slate-500 text-xs sm:text-sm mt-1">Kepuasan Klien</div>
+      </div>
+      <div class="text-center">
+        <div class="font-black text-2xl sm:text-3xl" style="font-family:'Sora',sans-serif; color: var(--color-light)">12+</div>
+        <div class="text-slate-500 text-xs sm:text-sm mt-1">Tahun Pengalaman</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator" aria-hidden="true">
+    <span class="text-xs font-medium tracking-widest uppercase" style="color:#64748b">Scroll</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#64748b">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
+<!-- / HERO PARALLAX COMPONENT -->
+
+<script>
+  (() => {
+    'use strict';
+
+    // Reveal animations via IntersectionObserver
+    const animEls = document.querySelectorAll('.anim-fade, .anim-up');
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      animEls.forEach(el => obs.observe(el));
+    } else {
+      animEls.forEach(el => el.classList.add('anim-in'));
+    }
+
+    // Parallax mouse effect
+    document.addEventListener('mousemove', e => {
+      const blobs = document.querySelectorAll('[data-parallax-speed]');
+      blobs.forEach(blob => {
+        const speed = parseFloat(blob.dataset.parallaxSpeed) || 0.2;
+        const x = (e.clientX / window.innerWidth - 0.5) * speed * 80;
+        const y = (e.clientY / window.innerHeight - 0.5) * speed * 80;
+        blob.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    });
+  })();
+</script>
+</body>
+</html>

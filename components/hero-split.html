@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  COMPONENT: hero-split                               ║
+  ║  Style: Light theme, 2-column split (copy + visual)  ║
+  ║  Source: landing-sablanding.html                     ║
+  ║  Usage: Copy <section class="hero-section"> + CSS.   ║
+  ║  Customise: Headline, badges, CTA, visual card data. ║
+  ╚══════════════════════════════════════════════════════╝
+-->
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component: Hero Split</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-primary:   #234292;
+      --color-secondary: #03C383;
+      --color-action:    #1E90FF;
+      --color-dark:      #0D1B3E;
+      --color-light:     #F4F7FF;
+      --color-text:      #3D4F6E;
+      --color-text-light:#6B7DA0;
+      --color-border:    #E4EBF5;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Open Sans', sans-serif; background: var(--color-light); color: var(--color-text); }
+
+    /* ── Hero wrapper ── */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 0 4rem;
+      overflow: hidden;
+    }
+
+    /* Blob backgrounds */
+    .hero-blob-1 {
+      position: absolute;
+      top: -200px; right: -180px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(35,66,146,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-blob-2 {
+      position: absolute;
+      bottom: -150px; left: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(3,195,131,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(35,66,146,.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    /* Gradient text */
+    .grad-text {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Trust badges */
+    .trust-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 9999px;
+      padding: .375rem 1rem;
+      font-size: .8125rem; font-weight: 600;
+      color: var(--color-dark);
+      box-shadow: 0 2px 8px rgba(35,66,146,.06);
+    }
+
+    /* Section label */
+    .section-label {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--color-primary);
+    }
+    .section-label-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--color-secondary);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--color-primary); color: #fff;
+      font-weight: 700; border-radius: .75rem;
+      padding: .875rem 1.5rem;
+      text-decoration: none;
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-primary:hover { opacity: .9; transform: translateY(-2px); }
+
+    .btn-outline-blue {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 2px solid rgba(35,66,146,.25); color: var(--color-primary);
+      font-weight: 700; border-radius: .75rem;
+      padding: .875rem 1.5rem;
+      text-decoration: none;
+      background: rgba(35,66,146,.04);
+      transition: border-color .2s, background .2s;
+    }
+    .btn-outline-blue:hover { border-color: var(--color-primary); background: rgba(35,66,146,.08); }
+
+    /* Stars */
+    .testi-stars { color: #F59E0B; letter-spacing: .05em; }
+
+    /* Float animations */
+    .float-anim   { animation: floatA 5s ease-in-out infinite; }
+    .float-anim-2 { animation: floatA 7s ease-in-out infinite reverse; }
+    @keyframes floatA {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute; bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      color: var(--color-text-light);
+      text-decoration: none;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(5px); }
+    }
+
+    /* Reveal animations */
+    .anim-fade  { opacity: 0; transform: translateY(20px); transition: opacity .7s, transform .7s; }
+    .anim-left  { opacity: 0; transform: translateX(-24px); transition: opacity .7s, transform .7s; }
+    .anim-right { opacity: 0; transform: translateX(24px); transition: opacity .7s, transform .7s; }
+    .anim-fade.anim-in, .anim-left.anim-in, .anim-right.anim-in { opacity: 1; transform: translate(0); }
+    .d-100 { transition-delay: .1s; } .d-200 { transition-delay: .2s; }
+    .d-300 { transition-delay: .3s; } .d-400 { transition-delay: .4s; }
+    .d-500 { transition-delay: .5s; }
+
+    /* Mini badges */
+    .mini-badge { position: absolute; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- HERO SPLIT COMPONENT                                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="hero-section">
+  <!-- Background layers -->
+  <div class="hero-blob-1"></div>
+  <div class="hero-blob-2"></div>
+  <div class="hero-grid"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full relative z-10">
+    <div class="grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-12 items-center">
+
+      <!-- ── Left: Copy ── -->
+      <div>
+        <div class="section-label anim-fade mb-4">
+          <span class="section-label-dot"></span>
+          Lead Generation Agency #1 Jakarta
+        </div>
+
+        <h1 class="anim-fade d-100 text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-6"
+            style="color: var(--color-dark)">
+          Bisnis Anda Butuh
+          <span class="grad-text"> Lebih Banyak</span>
+          Prospek Berkualitas
+        </h1>
+
+        <p class="anim-fade d-200 text-base leading-relaxed mb-8 max-w-md" style="color: var(--color-text)">
+          SAB membantu bisnis Anda mendominasi pasar digital dengan strategi lead generation
+          berbasis data. Dari SEO hingga Paid Ads — kami pastikan pipeline Anda selalu penuh
+          dengan prospek yang siap beli.
+        </p>
+
+        <!-- Trust Badges -->
+        <div class="flex flex-wrap gap-3 mb-8 anim-fade d-300">
+          <span class="trust-badge">
+            <svg class="w-4 h-4" style="color: var(--color-secondary)" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            100+ Klien Aktif
+          </span>
+          <span class="trust-badge">
+            <svg class="w-4 h-4" style="color: var(--color-secondary)" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            7+ Tahun Pengalaman
+          </span>
+          <span class="trust-badge">
+            <svg class="w-4 h-4" style="color: var(--color-secondary)" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Garansi KPI
+          </span>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-4 anim-fade d-400">
+          <a href="#contact" class="btn-primary">
+            Mulai Konsultasi Gratis
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a href="#casestudies" class="btn-outline-blue">Lihat Hasil Klien</a>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="flex items-center gap-3 mt-8 anim-fade d-500">
+          <div class="flex -space-x-2">
+            <div class="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold"
+                 style="background: var(--color-primary)">F</div>
+            <div class="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold"
+                 style="background: var(--color-secondary)">D</div>
+            <div class="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold"
+                 style="background: var(--color-action)">A</div>
+            <div class="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold"
+                 style="background: var(--color-dark)">+</div>
+          </div>
+          <div>
+            <div class="testi-stars text-sm">★★★★★</div>
+            <p class="text-xs mt-0.5" style="color: var(--color-text-light)">Dipercaya 100+ bisnis di Indonesia</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Right: Visual Dashboard Card ── -->
+      <div class="relative flex justify-center items-center anim-right d-200 px-8 lg:px-6">
+
+        <!-- Main card -->
+        <div class="float-anim bg-white rounded-2xl p-6 w-full max-w-md border"
+             style="border-color: var(--color-border); box-shadow: 0 32px 80px rgba(35,66,146,.16)">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-text-light)">Lead Dashboard</p>
+              <p class="text-sm font-bold mt-0.5" style="color: var(--color-dark)">Oktober 2024</p>
+            </div>
+            <span class="text-xs font-bold px-3 py-1 rounded-full border"
+                  style="background:#F0FDF4; color:#16A34A; border-color:#BBF7D0">● Live</span>
+          </div>
+
+          <!-- Stats row -->
+          <div class="grid grid-cols-3 gap-3 mb-5">
+            <div class="rounded-xl p-3 text-center" style="background: var(--color-light)">
+              <p class="text-xl font-bold" style="color: var(--color-primary)">847</p>
+              <p class="text-xs mt-0.5" style="color: var(--color-text-light)">Total Leads</p>
+            </div>
+            <div class="rounded-xl p-3 text-center" style="background: #F0FDF4">
+              <p class="text-xl font-bold" style="color: var(--color-secondary)">35%</p>
+              <p class="text-xs mt-0.5" style="color: var(--color-text-light)">Conv. Rate</p>
+            </div>
+            <div class="rounded-xl p-3 text-center" style="background: #EFF6FF">
+              <p class="text-xl font-bold" style="color: var(--color-action)">4.2x</p>
+              <p class="text-xs mt-0.5" style="color: var(--color-text-light)">ROI</p>
+            </div>
+          </div>
+
+          <!-- Mini bar chart -->
+          <div class="mb-4">
+            <div class="flex items-end gap-1.5" style="height: 64px">
+              <div class="flex-1 rounded-t" style="height:40%; background: var(--color-primary); opacity:.3"></div>
+              <div class="flex-1 rounded-t" style="height:55%; background: var(--color-primary); opacity:.5"></div>
+              <div class="flex-1 rounded-t" style="height:45%; background: var(--color-primary); opacity:.6"></div>
+              <div class="flex-1 rounded-t" style="height:70%; background: var(--color-primary); opacity:.7"></div>
+              <div class="flex-1 rounded-t" style="height:85%; background: var(--color-secondary)"></div>
+              <div class="flex-1 rounded-t" style="height:100%; background: var(--color-secondary)"></div>
+              <div class="flex-1 rounded-t" style="height:90%; background: var(--color-secondary); opacity:.8"></div>
+            </div>
+            <div class="flex justify-between mt-1.5 text-xs" style="color: var(--color-text-light)">
+              <span>Apr</span><span>Mei</span><span>Jun</span>
+              <span>Jul</span><span>Agu</span><span>Sep</span><span>Okt</span>
+            </div>
+          </div>
+
+          <!-- Lead notification -->
+          <div class="flex items-center gap-3 rounded-xl px-3 py-2.5 border"
+               style="background: #F0FDF4; border-color: #BBF7D0">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                 style="background: var(--color-secondary)">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-bold" style="color: var(--color-dark)">Lead Baru Masuk!</p>
+              <p class="text-xs truncate" style="color: var(--color-text-light)">Budi S. — tertarik paket Growth</p>
+            </div>
+            <span class="text-xs font-semibold flex-shrink-0" style="color: var(--color-secondary)">Baru</span>
+          </div>
+        </div>
+
+        <!-- Floating badges -->
+        <div class="mini-badge float-anim-2 bg-white rounded-2xl px-4 py-3 border shadow-lg"
+             style="top:2%; left:-5%; border-color: var(--color-border); min-width:120px">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center"
+                 style="background: rgba(35,66,146,.08)">
+              <svg class="w-4 h-4" style="color: var(--color-primary)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs font-bold" style="color: var(--color-dark)">+420%</p>
+              <p class="text-xs" style="color: var(--color-text-light)">Revenue</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-badge float-anim bg-white rounded-2xl px-4 py-3 border shadow-lg"
+             style="bottom:2%; right:-5%; border-color: var(--color-border); min-width:120px">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: #F0FDF4">
+              <svg class="w-4 h-4" style="color: var(--color-secondary)" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs font-bold" style="color: var(--color-dark)">KPI Tercapai</p>
+              <p class="text-xs" style="color: var(--color-text-light)">Garansi Hasil</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <a href="#next" class="scroll-indicator" aria-label="Scroll down">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </a>
+</section>
+<!-- / HERO SPLIT COMPONENT -->
+
+<div id="next" style="height:2px"></div>
+
+<script>
+  (() => {
+    'use strict';
+    const animEls = document.querySelectorAll('.anim-fade,.anim-left,.anim-right');
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target); } });
+      }, { threshold: 0.08 });
+      animEls.forEach(el => obs.observe(el));
+    } else {
+      animEls.forEach(el => el.classList.add('anim-in'));
+    }
+  })();
+</script>
+</body>
+</html>

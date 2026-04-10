@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  COMPONENT: pricing-table                            ║
+  ║  Style: 3-col cards, center "featured" highlighted  ║
+  ║  Source: landing-sablanding.html (Pricing section)   ║
+  ║  Customise: PLANS array in <script> below.           ║
+  ╚══════════════════════════════════════════════════════╝
+-->
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component: Pricing Table</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-primary:   #234292;
+      --color-secondary: #03C383;
+      --color-dark:      #0D1B3E;
+      --color-light:     #F4F7FF;
+      --color-text:      #3D4F6E;
+      --color-text-light:#6B7DA0;
+      --color-border:    #E4EBF5;
+    }
+    body { font-family: 'Open Sans', sans-serif; margin: 0; background: #fff; }
+
+    .pricing-section { background: #fff; padding: 5rem 0; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--color-primary);
+    }
+    .section-label-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-secondary); }
+    .grad-text {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* ── Pricing card ── */
+    .pricing-card {
+      position: relative;
+      background: #fff;
+      border: 1.5px solid var(--color-border);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      display: flex; flex-direction: column;
+      transition: box-shadow .25s, transform .2s;
+    }
+    .pricing-card:hover { box-shadow: 0 12px 40px rgba(35,66,146,.12); transform: translateY(-3px); }
+
+    .pricing-card.featured {
+      border-color: var(--color-primary);
+      background: linear-gradient(160deg, #EEF3FF 0%, #F0FFF9 100%);
+      box-shadow: 0 16px 48px rgba(35,66,146,.18);
+    }
+    .pricing-card.featured:hover { transform: translateY(-5px); }
+
+    .pricing-badge {
+      position: absolute;
+      top: -13px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      color: #fff;
+      font-size: .7rem; font-weight: 800;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: .25rem .875rem;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+
+    .price-amount {
+      font-size: 2.25rem; font-weight: 800;
+      color: var(--color-dark);
+      line-height: 1;
+    }
+
+    .feature-item {
+      display: flex; align-items: flex-start; gap: .625rem;
+      font-size: .875rem;
+      color: var(--color-text);
+      padding: .35rem 0;
+    }
+    .feature-item.dimmed { opacity: .4; }
+    .feature-check { color: var(--color-secondary); flex-shrink: 0; margin-top: .1rem; }
+    .feature-cross { color: #cbd5e1; flex-shrink: 0; margin-top: .1rem; }
+
+    /* CTA buttons */
+    .btn-pricing-primary {
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      background: var(--color-primary); color: #fff;
+      font-weight: 700; font-size: .875rem;
+      border-radius: .75rem; padding: .875rem;
+      text-decoration: none;
+      transition: opacity .2s, transform .15s;
+      margin-top: auto;
+    }
+    .btn-pricing-primary:hover { opacity: .9; transform: translateY(-1px); }
+
+    .btn-pricing-outline {
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      border: 1.5px solid var(--color-border);
+      color: var(--color-primary); background: transparent;
+      font-weight: 700; font-size: .875rem;
+      border-radius: .75rem; padding: .875rem;
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+      margin-top: auto;
+    }
+    .btn-pricing-outline:hover { border-color: var(--color-primary); background: rgba(35,66,146,.04); }
+
+    /* Reveal */
+    .anim-fade { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
+    .anim-fade.anim-in { opacity: 1; transform: translateY(0); }
+    .d-100 { transition-delay: .1s; } .d-200 { transition-delay: .2s; } .d-300 { transition-delay: .3s; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PRICING TABLE COMPONENT                                 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="pricing" class="pricing-section">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="section-label justify-center anim-fade">
+        <span class="section-label-dot"></span>
+        Pricing
+      </div>
+      <h2 class="font-extrabold text-3xl lg:text-4xl mt-3 mb-4 anim-fade d-100"
+          style="color: var(--color-dark)">
+        Paket yang Sesuai <span class="grad-text">Kebutuhan Bisnis</span> Anda
+      </h2>
+      <p class="anim-fade d-200" style="color: var(--color-text-light)">
+        Tiga pilihan paket dengan layanan terbaik. Tidak ada biaya tersembunyi — transparansi penuh dari awal.
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid lg:grid-cols-3 gap-6 items-start" id="pricingGrid">
+      <!-- Injected by JS -->
+    </div>
+
+    <!-- Footer note -->
+    <p class="text-center text-sm mt-8 anim-fade" style="color: var(--color-text-light)">
+      <svg class="w-4 h-4 inline mr-1" style="color: var(--color-secondary)" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+      </svg>
+      Semua paket termasuk konsultasi awal gratis · Tidak ada biaya setup tersembunyi · Transparent reporting
+    </p>
+  </div>
+</section>
+<!-- / PRICING TABLE COMPONENT -->
+
+<script>
+  // ── KONFIGURASI — ubah paket di sini ─────────────────────────
+  const PLANS = [
+    {
+      badge:     null,
+      name:      'Starter',
+      desc:      'Untuk bisnis yang baru membangun digital presence',
+      price:     'Rp 3 Jt',
+      period:    '/ bulan · kontrak 3 bulan',
+      featured:  false,
+      waText:    'Halo SAB, saya tertarik dengan Paket Starter.',
+      btnLabel:  'Pilih Paket Starter',
+      features: [
+        { text: 'SEO On-Page (10 halaman)',         included: true },
+        { text: '4 Artikel Blog / Bulan',            included: true },
+        { text: 'Social Media (2 platform, 12 post)',included: true },
+        { text: 'Landing Page 1 halaman',            included: true },
+        { text: 'Monthly Report',                    included: true },
+        { text: 'PPC / Paid Ads Management',         included: false },
+        { text: 'Email Automation',                  included: false },
+        { text: 'Dedicated Account Manager',         included: false },
+      ],
+    },
+    {
+      badge:     'Paling Populer',
+      name:      'Growth',
+      desc:      'Untuk bisnis yang ingin akselerasi pertumbuhan leads',
+      price:     'Rp 8 Jt',
+      period:    '/ bulan · kontrak 6 bulan',
+      featured:  true,
+      waText:    'Halo SAB, saya tertarik dengan Paket Growth.',
+      btnLabel:  'Pilih Paket Growth',
+      features: [
+        { text: 'SEO Full (30 halaman + teknikal)',     included: true },
+        { text: '8 Artikel Blog + Copywriting',         included: true },
+        { text: 'Social Media (3 platform, 20 post)',   included: true },
+        { text: 'PPC Google Ads + Meta Ads',            included: true },
+        { text: 'Email Marketing (3 sequence)',          included: true },
+        { text: 'Landing Page + Lead Capture Form',     included: true },
+        { text: 'Bi-weekly Report + Strategy Call',     included: true },
+        { text: 'Dedicated Account Manager',            included: false },
+      ],
+    },
+    {
+      badge:     null,
+      name:      'Enterprise',
+      desc:      'Untuk perusahaan dengan target growth agresif',
+      price:     'Hubungi Kami',
+      period:    'Disesuaikan kebutuhan & skala bisnis',
+      featured:  false,
+      waText:    'Halo SAB, saya ingin diskusi Paket Enterprise.',
+      btnLabel:  'Diskusi Kebutuhan Anda',
+      features: [
+        { text: 'Semua fitur Growth',                  included: true },
+        { text: 'Dedicated Account Manager',           included: true },
+        { text: 'Multi-channel Campaign (unlimited)',   included: true },
+        { text: 'Custom CRM Integration',              included: true },
+        { text: 'Advanced Analytics Dashboard',        included: true },
+        { text: 'Prioritas Support 24/7',              included: true },
+        { text: 'Garansi KPI tertulis',                included: true },
+        { text: 'Quarterly Business Review',           included: true },
+      ],
+    },
+  ];
+  const WA_NUMBER = '6282177336889';
+  // ─────────────────────────────────────────────────────────────
+
+  const CHECK = `<svg class="w-4 h-4 feature-check flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>`;
+  const CROSS = `<svg class="w-4 h-4 feature-cross flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>`;
+
+  const grid = document.getElementById('pricingGrid');
+  PLANS.forEach((p, i) => {
+    const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(p.waText)}`;
+    const featuresHTML = p.features.map(f =>
+      `<li class="feature-item${f.included ? '' : ' dimmed'}">${f.included ? CHECK : CROSS}${f.text}</li>`
+    ).join('');
+    const arrowIcon = p.featured
+      ? `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>`
+      : '';
+
+    grid.innerHTML += `
+      <div class="pricing-card${p.featured ? ' featured' : ''} anim-fade d-${i * 100}">
+        ${p.badge ? `<div class="pricing-badge">${p.badge}</div>` : ''}
+        <div class="mb-6${p.badge ? ' mt-4' : ''}">
+          <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color: var(--color-text-light)">Paket</p>
+          <h3 class="font-extrabold text-2xl" style="color: var(--color-dark)">${p.name}</h3>
+          <p class="text-sm mt-1" style="color: var(--color-text-light)">${p.desc}</p>
+        </div>
+        <div class="mb-6 pb-6" style="border-bottom: 1px solid var(--color-border)">
+          <span class="text-sm font-semibold" style="color: var(--color-text-light)">Mulai dari</span>
+          <div class="price-amount mt-1" style="font-size:${p.price.length > 8 ? '1.5rem' : '2.25rem'}">${p.price}</div>
+          <p class="text-xs mt-1" style="color: var(--color-text-light)">${p.period}</p>
+        </div>
+        <ul class="space-y-1 mb-8 flex-1">${featuresHTML}</ul>
+        <a href="${waUrl}" target="_blank" rel="noopener"
+           class="${p.featured ? 'btn-pricing-primary' : 'btn-pricing-outline'}">
+          ${p.btnLabel}${arrowIcon}
+        </a>
+      </div>`;
+  });
+
+  // Reveal
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.anim-fade').forEach(el => obs.observe(el));
+  } else { document.querySelectorAll('.anim-fade').forEach(el => el.classList.add('anim-in')); }
+</script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  COMPONENT: form-lead-capture                        ║
+  ║  Style: Dark primary left + white form card right    ║
+  ║  Source: landing-lead-capture.html                   ║
+  ║  Customise: WA_NUMBER, benefit bullets, form fields. ║
+  ╚══════════════════════════════════════════════════════╝
+-->
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component: Form Lead Capture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-primary:   #1e3a5f;
+      --color-secondary: #0ea5e9;
+      --color-accent:    #10b981;
+      --color-dark:      #0f172a;
+      --color-text:      #64748b;
+    }
+    body { font-family: 'Inter', sans-serif; margin: 0; }
+
+    .lc-section {
+      background: var(--color-primary);
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 0;
+    }
+    .lc-section::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(14,165,233,.06);
+      pointer-events: none;
+    }
+    .lc-section::after {
+      content: '';
+      position: absolute;
+      bottom: -150px; left: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(16,185,129,.05);
+      pointer-events: none;
+    }
+
+    /* Badge */
+    .lc-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(16,185,129,.15);
+      border: 1px solid rgba(16,185,129,.25);
+      border-radius: 9999px;
+      padding: .35rem .85rem;
+      font-size: .72rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: #34d399;
+    }
+    .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    .grad-text {
+      background: linear-gradient(90deg, #60a5fa, #34d399);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* Form card */
+    .form-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 2rem;
+      box-shadow: 0 24px 64px rgba(0,0,0,.28);
+    }
+
+    .form-input {
+      width: 100%;
+      border: 2px solid #e2e8f0;
+      border-radius: .75rem;
+      padding: .75rem 1rem;
+      font-size: .875rem;
+      font-family: inherit;
+      color: var(--color-dark);
+      outline: none;
+      transition: border-color .2s;
+      box-sizing: border-box;
+    }
+    .form-input:focus { border-color: var(--color-secondary); }
+
+    /* WA button */
+    .btn-wa-submit {
+      width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: .625rem;
+      background: #25D366; color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      border: none; cursor: pointer;
+      border-radius: .875rem;
+      padding: 1rem;
+      transition: opacity .2s, transform .15s, box-shadow .2s;
+    }
+    .btn-wa-submit:hover { opacity: .92; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.4); }
+
+    /* Slots alert */
+    .slots-alert {
+      display: flex; align-items: center; gap: .625rem;
+      background: #fef2f2; border: 1px solid #fecaca;
+      border-radius: .625rem;
+      padding: .625rem 1rem;
+      font-size: .85rem;
+      color: #dc2626;
+    }
+
+    /* Err msg */
+    .err-msg {
+      display: none;
+      color: #dc2626; font-size: .75rem; margin-top: .25rem;
+    }
+    .form-input.invalid { border-color: #dc2626; }
+    .form-input.invalid + .err-msg { display: block; }
+
+    /* Success */
+    .success-state { display: none; text-align: center; padding: 2rem 1rem; }
+    .checkmark-circle {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: #f0fdf4;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    /* Trust bullets */
+    .trust-bullet { display: flex; align-items: flex-start; gap: .625rem; font-size: .875rem; color: #cbd5e1; }
+    .check-icon { color: #34d399; flex-shrink: 0; margin-top: .1rem; }
+
+    /* Reveal */
+    .anim-fade { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
+    .anim-fade.anim-in { opacity: 1; transform: translateY(0); }
+    .d-100 { transition-delay: .1s; } .d-200 { transition-delay: .2s; } .d-300 { transition-delay: .3s; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- FORM LEAD CAPTURE COMPONENT                             -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="lc-section" id="leadCaptureSection">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+      <!-- ── Left: Copy ── -->
+      <div class="text-white">
+
+        <div class="lc-badge anim-fade mb-6">
+          <span class="badge-dot"></span>
+          Program Eksklusif 2024
+        </div>
+
+        <h1 class="anim-fade d-100 mb-5" style="font-family: 'Poppins', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15">
+          Tingkatkan Omzet Bisnis<br>
+          <span class="grad-text">3× Lipat dalam 90 Hari</span>
+        </h1>
+
+        <p class="anim-fade d-200 text-slate-300 text-base leading-relaxed mb-8 max-w-lg">
+          Strategi digital marketing terukur yang telah membantu
+          <strong class="text-white">500+ bisnis UMKM</strong> Indonesia meledakkan penjualan
+          — tanpa buang budget iklan sia-sia.
+        </p>
+
+        <!-- Trust bullets -->
+        <ul class="anim-fade d-300 space-y-3 mb-8">
+          <li class="trust-bullet">
+            <svg class="w-5 h-5 check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Konsultasi 1-on-1 GRATIS senilai Rp 2.500.000
+          </li>
+          <li class="trust-bullet">
+            <svg class="w-5 h-5 check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Tanpa komitmen, tanpa biaya tersembunyi
+          </li>
+          <li class="trust-bullet">
+            <svg class="w-5 h-5 check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Tim ahli merespons dalam &lt;2 jam via WhatsApp
+          </li>
+        </ul>
+
+        <!-- Client logos placeholder -->
+        <div class="anim-fade d-300">
+          <p class="text-xs text-slate-500 uppercase tracking-widest mb-3">Dipercaya oleh</p>
+          <div class="flex flex-wrap gap-3 opacity-60">
+            <span class="text-slate-400 font-bold text-sm">Mercubuana</span>
+            <span class="text-slate-400">·</span>
+            <span class="text-slate-400 font-bold text-sm">Bosch</span>
+            <span class="text-slate-400">·</span>
+            <span class="text-slate-400 font-bold text-sm">Telkom</span>
+            <span class="text-slate-400">·</span>
+            <span class="text-slate-400 font-bold text-sm">LP3I</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Right: Lead Form ── -->
+      <div class="anim-fade d-200">
+        <div class="form-card">
+
+          <!-- Form header -->
+          <div class="text-center mb-5">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-3"
+                 style="background: rgba(16,185,129,.1)">
+              <svg class="w-6 h-6" style="color: var(--color-accent)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h2 style="font-family:'Poppins',sans-serif; font-weight:700; color: var(--color-primary); font-size:1.2rem; line-height:1.3">
+              Daftar Konsultasi <span style="color: var(--color-accent)">GRATIS</span>
+            </h2>
+            <p style="color: var(--color-text); font-size:.85rem; margin-top:.25rem">Tim kami menghubungi Anda dalam 1×24 jam</p>
+          </div>
+
+          <!-- Slots alert -->
+          <div class="slots-alert mb-5">
+            <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>
+            <span>Slot tersisa: <strong id="slotsNum">12</strong> dari 50</span>
+          </div>
+
+          <!-- Form -->
+          <form id="leadForm" novalidate autocomplete="on">
+            <div class="mb-4">
+              <label class="block text-sm font-semibold mb-1.5" style="color: var(--color-primary)" for="f-nama">
+                Nama Lengkap <span style="color:red">*</span>
+              </label>
+              <input id="f-nama" name="nama" type="text" placeholder="Masukkan nama lengkap Anda"
+                     autocomplete="name" class="form-input" />
+              <p class="err-msg" id="err-nama">Nama wajib diisi (minimal 2 karakter)</p>
+            </div>
+
+            <div class="mb-4">
+              <label class="block text-sm font-semibold mb-1.5" style="color: var(--color-primary)" for="f-email">
+                Alamat Email <span style="color:red">*</span>
+              </label>
+              <input id="f-email" name="email" type="email" placeholder="nama@email.com"
+                     autocomplete="email" class="form-input" />
+              <p class="err-msg" id="err-email">Masukkan alamat email yang valid</p>
+            </div>
+
+            <div class="mb-6">
+              <label class="block text-sm font-semibold mb-1.5" style="color: var(--color-primary)" for="f-wa">
+                Nomor WhatsApp <span style="color:red">*</span>
+                <span style="color: var(--color-text); font-weight:400; font-size:.75rem">(aktif)</span>
+              </label>
+              <div class="flex gap-2">
+                <span class="flex-shrink-0 flex items-center bg-slate-100 border-2 border-slate-200
+                             rounded-xl px-3 text-sm text-slate-600 font-medium select-none">🇮🇩 +62</span>
+                <input id="f-wa" name="whatsapp" type="tel" placeholder="812-3456-7890"
+                       autocomplete="tel" class="form-input flex-1" />
+              </div>
+              <p class="err-msg" id="err-wa">Nomor WhatsApp tidak valid (minimal 9 digit)</p>
+            </div>
+
+            <button type="submit" class="btn-wa-submit">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Ya, Saya Mau Konsultasi Gratis!
+            </button>
+
+            <p class="text-center text-xs mt-3" style="color: var(--color-text)">
+              🔒 Data Anda aman &amp; tidak disebarkan ke pihak ketiga
+            </p>
+          </form>
+
+          <!-- Success state -->
+          <div class="success-state" id="formSuccess">
+            <div class="checkmark-circle">
+              <svg class="w-9 h-9 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <h3 style="font-family:'Poppins',sans-serif; font-weight:700; color: var(--color-primary); font-size:1.2rem; margin-bottom:.5rem">
+              Pendaftaran Berhasil! 🎉
+            </h3>
+            <p style="color: var(--color-text); font-size:.875rem; line-height:1.6">
+              Tim kami akan menghubungi Anda via <strong>WhatsApp</strong> dalam 1×24 jam.<br>
+              Pastikan nomor WA Anda aktif!
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- / FORM LEAD CAPTURE COMPONENT -->
+
+<script>
+  // ── KONFIGURASI ──────────────────────────────────────────────
+  const WA_NUMBER = '6282177336889';
+  // ─────────────────────────────────────────────────────────────
+
+  // Reveal animations
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.anim-fade').forEach(el => obs.observe(el));
+  } else { document.querySelectorAll('.anim-fade').forEach(el => el.classList.add('anim-in')); }
+
+  // Slots countdown (cosmetic)
+  let slots = 12;
+  setInterval(() => {
+    if (slots > 7 && Math.random() < .05) {
+      slots--;
+      const el = document.getElementById('slotsNum');
+      if (el) el.textContent = slots;
+    }
+  }, 8000);
+
+  // Validation helpers
+  const validate = {
+    nama: v => v.trim().length >= 2,
+    email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+    wa: v => v.replace(/\D/g, '').length >= 9,
+  };
+
+  function markField(id, valid) {
+    const el = document.getElementById(id);
+    el.classList.toggle('invalid', !valid);
+    return valid;
+  }
+
+  document.getElementById('leadForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const nama  = document.getElementById('f-nama').value;
+    const email = document.getElementById('f-email').value;
+    const wa    = document.getElementById('f-wa').value;
+
+    const ok = [
+      markField('f-nama',  validate.nama(nama)),
+      markField('f-email', validate.email(email)),
+      markField('f-wa',    validate.wa(wa)),
+    ].every(Boolean);
+
+    if (!ok) return;
+
+    const waNum = '+62' + wa.replace(/\D/g, '');
+    const msg   = encodeURIComponent(
+      `Halo SAB, saya ingin konsultasi gratis!\n\nNama: ${nama}\nEmail: ${email}\nWA: ${waNum}`
+    );
+
+    document.getElementById('leadForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    setTimeout(() => window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank'), 800);
+  });
+
+  // Clear invalid on input
+  ['f-nama','f-email','f-wa'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+      this.classList.remove('invalid');
+    });
+  });
+</script>
+</body>
+</html>
