@@ -40,3 +40,12 @@ Build for production:
 ```bash
 npm run build
 ```
+
+## 🛠️ Usage Guide
+
+Please read usage guide in the:
+```bash
+/docs/USAGE.md
+```
+
+
