@@ -4,7 +4,7 @@
   "rewrites": [
     { "source": "/", "destination": "/templates/landing.html" },
     { "source": "/service", "destination": "/templates/landing-service.html" },
-    { "source": "/lead-capture", "destination": "/templates/landing-lead-capture.html" }
+    { "source": "/lead-capture", "destination": "/templates/landing-lead-capture.html" },
     { "source": "/ecommerce", "destination": "/templates/landing-ecommerce.html" },
     { "source": "/portfolio", "destination": "/templates/landing-portfolio.html" },
     { "source": "/webinar", "destination": "/templates/landing-webinar.html" },
