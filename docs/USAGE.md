@@ -243,8 +243,7 @@ Ikuti langkah-langkah ini setiap kali hendak men-deploy template untuk client ba
 ```bash
 git clone https://github.com/abdulchalik/sab-conversion-kit.git nama-project-client
 cd nama-project-client
-npm init -y
-npm install -D tailwindcss@3.4.14 postcss autoprefixer
+npm install
 ```
 
 ### Langkah 2 — Pilih template yang sesuai
