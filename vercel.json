@@ -2,7 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".",
   "rewrites": [
-    { "source": "/", "destination": "/templates/landing-sablanding.html" },
+    { "source": "/", "destination": "/templates/landing.html" },
     { "source": "/service", "destination": "/templates/landing-service.html" },
     { "source": "/lead-capture", "destination": "/templates/landing-lead-capture.html" }
     { "source": "/ecommerce", "destination": "/templates/landing-ecommerce.html" },
