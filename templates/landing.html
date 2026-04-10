@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  SAB CONVERSION KIT — Landing Page Template Gallery  ║
+  ║  10 production-ready landing page templates           ║
+  ║  Style: SAB Landing (sablanding)                     ║
+  ╚══════════════════════════════════════════════════════╝
+-->
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SAB Conversion Kit — Koleksi template landing page siap pakai untuk berbagai kebutuhan bisnis." />
+  <title>SAB Conversion Kit — Landing Page Templates</title>
+
+  <!-- Google Fonts: Open Sans (sablanding brand font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #F4F6FA;
+      color: #3c4457;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── SAB Landing Color System ──────────────────────── */
+    :root {
+      --primary:    #234292;
+      --secondary:  #03C383;
+      --action:     #409EFF;
+      --dark:       #0D1B3E;
+      --text:       #3c4457;
+      --light:      #F4F6FA;
+      --border:     #E5E8EF;
+    }
+
+    /* ─── Scroll Animations ─────────────────────────────── */
+    .anim-fade  { opacity: 0; transform: translateY(28px);  transition: opacity .65s ease, transform .65s ease; }
+    .anim-up    { opacity: 0; transform: translateY(36px);  transition: opacity .65s ease, transform .65s ease; }
+    .anim-scale { opacity: 0; transform: scale(0.92);       transition: opacity .65s ease, transform .65s ease; }
+    .anim-in    { opacity: 1 !important; transform: none !important; }
+    .d-100 { transition-delay: .10s; }
+    .d-200 { transition-delay: .20s; }
+    .d-300 { transition-delay: .30s; }
+    .d-400 { transition-delay: .40s; }
+    .d-500 { transition-delay: .50s; }
+    .d-600 { transition-delay: .60s; }
+
+    /* ─── Gradient Text ─────────────────────────────────── */
+    .grad-text-mixed {
+      background: linear-gradient(135deg, #234292 0%, #03C383 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── Hero Section ──────────────────────────────────── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #ffffff 0%, #F4F6FA 50%, #e8eef8 100%);
+      padding: 7rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(35,66,146,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35,66,146,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 100%);
+    }
+    .hero-blob-1 {
+      position: absolute; width: 50%; max-width: 560px; aspect-ratio: 1;
+      border-radius: 50%; top: -10%; right: -5%;
+      background: radial-gradient(circle, rgba(35,66,146,0.09) 0%, transparent 65%);
+      filter: blur(72px); pointer-events: none;
+    }
+    .hero-blob-2 {
+      position: absolute; width: 35%; max-width: 400px; aspect-ratio: 1;
+      border-radius: 50%; bottom: -15%; left: -5%;
+      background: radial-gradient(circle, rgba(3,195,131,0.08) 0%, transparent 65%);
+      filter: blur(56px); pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 740px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: #027A52;
+      margin-bottom: 1rem;
+    }
+    .section-label-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #027A52;
+      animation: glow-green 2.2s ease-in-out infinite;
+    }
+    @keyframes glow-green {
+      0%, 100% { box-shadow: 0 0 6px rgba(2,122,82,0.5); }
+      50%       { box-shadow: 0 0 14px rgba(2,122,82,0.9); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text);
+      max-width: 560px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Stats badges */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .stat-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--dark);
+      box-shadow: 0 2px 8px rgba(35,66,146,0.06);
+    }
+    .stat-badge svg { color: var(--secondary); }
+
+    /* ─── Filter Bar ────────────────────────────────────── */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 1.5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .filter-btn {
+      padding: 0.55rem 1.25rem;
+      border: 1.5px solid var(--border);
+      border-radius: 9999px;
+      background: #fff;
+      color: var(--text);
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .22s ease;
+    }
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: 0 4px 12px rgba(35,66,146,0.08);
+    }
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--primary), #1a3070);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 16px rgba(35,66,146,0.2);
+    }
+
+    /* ─── Template Grid ─────────────────────────────────── */
+    .grid-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 4rem;
+    }
+    .templates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2rem;
+    }
+    @media (max-width: 480px) {
+      .templates-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Template Card ─────────────────────────────────── */
+    .template-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .template-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 56px rgba(35,66,146,0.13);
+      border-color: rgba(35,66,146,0.2);
+    }
+    .template-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      opacity: 0;
+      transition: opacity .32s ease;
+    }
+    .template-card:hover::before { opacity: 1; }
+
+    /* Preview area */
+    .card-preview {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f0f2f8 0%, #e4e8f0 100%);
+    }
+    .card-preview iframe {
+      width: 1440px;
+      height: 900px;
+      border: none;
+      transform: scale(0.268);
+      transform-origin: top left;
+      pointer-events: none;
+    }
+    .card-preview-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(255,255,255,0.4) 100%);
+      z-index: 2;
+      cursor: pointer;
+      transition: background .3s ease;
+    }
+    .template-card:hover .card-preview-overlay {
+      background: linear-gradient(to bottom, transparent 40%, rgba(255,255,255,0.15) 100%);
+    }
+
+    /* Preview hover action */
+    .preview-action {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.85);
+      opacity: 0;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      background: rgba(35,66,146,0.92);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(35,66,146,0.3);
+      transition: all .3s ease;
+      text-decoration: none;
+    }
+    .template-card:hover .preview-action {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Card body */
+    .card-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-category {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      width: fit-content;
+    }
+    .cat-business     { background: rgba(35,66,146,0.08); color: #234292; }
+    .cat-conversion   { background: rgba(3,195,131,0.1);  color: #027A52; }
+    .cat-ecommerce    { background: rgba(249,115,22,0.1); color: #c2410c; }
+    .cat-creative     { background: rgba(168,85,247,0.1); color: #7c3aed; }
+    .cat-event        { background: rgba(236,72,153,0.1); color: #be185d; }
+    .cat-utility      { background: rgba(107,114,128,0.1); color: #4b5563; }
+    .cat-industry     { background: rgba(14,165,233,0.1); color: #0369a1; }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .card-desc {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text);
+      opacity: 0.8;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+
+    /* Tags */
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      background: var(--light);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* Card actions */
+    .card-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: auto;
+    }
+    .btn-demo {
+      flex: 1;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      padding: 0.7rem 1rem;
+      background: linear-gradient(135deg, var(--primary), #1a3070);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .btn-demo:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(35,66,146,0.25);
+    }
+    .btn-source {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      padding: 0.7rem 1rem;
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.82rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all .18s ease;
+    }
+    .btn-source:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(35,66,146,0.04);
+    }
+
+    /* ─── Navbar ─────────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      padding: 1rem 1.5rem;
+      transition: background-color .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+    }
+    .navbar.scrolled {
+      background-color: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 2px 24px rgba(35,66,146,0.10);
+    }
+    .navbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+    .navbar-logo-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 8px rgba(35,66,146,0.2);
+    }
+    .navbar-logo-icon span {
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    .navbar-logo-text {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+    .navbar-logo-text .dot { color: var(--secondary); }
+
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .navbar-links a {
+      padding: 0.5rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all .2s ease;
+    }
+    .navbar-links a:hover {
+      color: var(--primary);
+      background: rgba(35,66,146,0.05);
+    }
+    .navbar-links a.active-link {
+      background: linear-gradient(135deg, var(--primary), #1a3070);
+      color: #fff;
+    }
+
+    @media (max-width: 640px) {
+      .navbar-links { display: none; }
+    }
+
+    /* ─── Footer ────────────────────────────────────────── */
+    .footer {
+      background: linear-gradient(160deg, var(--dark) 0%, #162d5e 100%);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .footer-logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .footer-logo .dot { color: var(--secondary); }
+    .footer p {
+      font-size: 0.85rem;
+      max-width: 400px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-links a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--secondary); }
+    .footer-copy {
+      font-size: 0.75rem;
+      opacity: 0.5;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.5rem;
+    }
+
+    /* ─── CTA Section ───────────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a3070 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(3,195,131,0.15);
+      filter: blur(40px);
+    }
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(64,158,255,0.12);
+      filter: blur(40px);
+    }
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cta-content h2 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .cta-content p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 2.5rem;
+      background: var(--secondary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease;
+      box-shadow: 0 4px 20px rgba(3,195,131,0.3);
+    }
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(3,195,131,0.4);
+    }
+
+    /* ─── Visibility for filtered items ─────────────────── */
+    .template-card.hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- NAVBAR                                                  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="navbar-logo">
+        <div class="navbar-logo-icon"><span>SAB</span></div>
+        <div class="navbar-logo-text">Conversion Kit<span class="dot">.</span></div>
+      </a>
+      <div class="navbar-links">
+        <a href="../components/index.html">Components</a>
+        <a href="#" class="active-link">Templates</a>
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- HERO                                                    -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-blob-1"></div>
+    <div class="hero-blob-2"></div>
+
+    <div class="hero-content">
+      <div class="section-label anim-fade">
+        <span class="section-label-dot"></span>
+        SAB Conversion Kit
+      </div>
+
+      <h1 class="anim-fade d-100">
+        Landing Page <span class="grad-text-mixed">Templates</span>
+      </h1>
+
+      <p class="anim-fade d-200">
+        Koleksi template landing page production-ready dengan konversi tinggi. Setiap template dibangun dengan Tailwind CSS, fully responsive, dan siap deploy ke Vercel.
+      </p>
+
+      <div class="hero-stats anim-fade d-300">
+        <div class="stat-badge">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          10 Templates
+        </div>
+        <div class="stat-badge">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Tailwind CSS
+        </div>
+        <div class="stat-badge">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Fully Responsive
+        </div>
+        <div class="stat-badge">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Vercel Ready
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- FILTER BAR                                              -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="filter-bar anim-fade d-400">
+    <button class="filter-btn active" data-filter="all">Semua</button>
+    <button class="filter-btn" data-filter="business">Business</button>
+    <button class="filter-btn" data-filter="conversion">Conversion</button>
+    <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+    <button class="filter-btn" data-filter="creative">Creative</button>
+    <button class="filter-btn" data-filter="event">Event</button>
+    <button class="filter-btn" data-filter="utility">Utility</button>
+    <button class="filter-btn" data-filter="industry">Industry</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- TEMPLATE GRID                                           -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="grid-wrapper">
+    <div class="templates-grid" id="templatesGrid">
+
+      <!-- 1. Service Landing -->
+      <div class="template-card anim-scale" data-category="business">
+        <div class="card-preview">
+          <iframe src="https://sab-conversion-kit.vercel.app/templates/landing-service.html" loading="lazy" sandbox="allow-scripts" title="Service Landing Preview"></iframe>
+          <div class="card-preview-overlay"></div>
+          <a href="https://sab-conversion-kit.vercel.app/templates/landing-service.html" target="_blank" rel="noopener" class="preview-action">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            Live Preview
+          </a>
+        </div>
+        <div class="card-body">
+          <span class="card-category cat-business">Business</span>
+          <h3 class="card-title">Service Landing Page</h3>
+          <p class="card-desc">Template landing page profesional untuk menampilkan layanan bisnis. Dilengkapi hero section, service cards, testimonials, dan CTA form.</p>
+          <div class="card-tags">
+            <span class="tag">Hero</span>
+            <span class="tag">Services</span>
+            <span class="tag">Testimonials</span>
+            <span class="tag">CTA Form</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://sab-conversion-kit.vercel.app/templates/landing-service.html" target="_blank" rel="noopener" class="btn-demo">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a href="landing-service.html" class="btn-source">Source</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Lead Capture -->
+      <div class="template-card anim-scale" data-category="conversion">
+        <div class="card-preview">
+          <iframe src="https://sab-conversion-kit.vercel.app/templates/landing-lead-capture.html" loading="lazy" sandbox="allow-scripts" title="Lead Capture Preview"></iframe>
+          <div class="card-preview-overlay"></div>
+          <a href="https://sab-conversion-kit.vercel.app/templates/landing-lead-capture.html" target="_blank" rel="noopener" class="preview-action">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            Live Preview
+          </a>
+        </div>
+        <div class="card-body">
+          <span class="card-category cat-conversion">Conversion</span>
+          <h3 class="card-title">Lead Capture Page</h3>
+          <p class="card-desc">Optimized untuk mengumpulkan leads. Split layout dengan hero copy di kiri dan lead capture form di kanan. Tingkatkan conversion rate Anda.</p>
+          <div class="card-tags">
+            <span class="tag">Lead Form</span>
+            <span class="tag">Split Layout</span>
+            <span class="tag">High Convert</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://sab-conversion-kit.vercel.app/templates/landing-lead-capture.html" target="_blank" rel="noopener" class="btn-demo">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a href="landing-lead-capture.html" class="btn-source">Source</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. E-Commerce -->
+      <div class="template-card anim-scale" data-category="ecommerce">
+        <div class="card-preview">
+          <iframe src="https://sab-conversion-kit.vercel.app/templates/landing-ecommerce.html" loading="lazy" sandbox="allow-scripts" title="E-Commerce Preview"></iframe>
+          <div class="card-preview-overlay"></div>
+          <a href="https://sab-conversion-kit.vercel.app/templates/landing-ecommerce.html" target="_blank" rel="noopener" class="preview-action">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            Live Preview
+          </a>
+        </div>
+        <div class="card-body">
+          <span class="card-category cat-ecommerce">E-Commerce</span>
+          <h3 class="card-title">E-Commerce Landing Page</h3>
+          <p class="card-desc">Template untuk produk e-commerce dengan product showcase, fitur highlights, pricing, dan checkout CTA. Perfect untuk product launch.</p>
+          <div class="card-tags">
+            <span class="tag">Product</span>
+            <span class="tag">Pricing</span>
+            <span class="tag">Checkout</span>
+            <span class="tag">Reviews</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://sab-conversion-kit.vercel.app/templates/landing-ecommerce.html" target="_blank" rel="noopener" class="btn-demo">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a href="landing-ecommerce.html" class="btn-source">Source</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Portfolio -->
+      <div class="template-card anim-scale" data-category="creative">
+        <div class="card-preview">
+          <iframe src="https://sab-conversion-kit.vercel.app/templates/landing-portfolio.html" loading="lazy" sandbox="allow-scripts" title="Portfolio Preview"></iframe>
+          <div class="card-preview-overlay"></div>
+          <a href="https://sab-conversion-kit.vercel.app/templates/landing-portfolio.html" target="_blank" rel="noopener" class="preview-action">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            Live Preview
+          </a>
+        </div>
+        <div class="card-body">
+          <span class="card-category cat-creative">Creative</span>
+          <h3 class="card-title">Portfolio Landing Page</h3>
+          <p class="card-desc">Showcase portofolio dan personal branding. Grid gallery, skill showcase, project highlights, dan contact section yang elegan.</p>
+          <div class="card-tags">
+            <span class="tag">Gallery</span>
+            <span class="tag">Skills</span>
+            <span class="tag">Projects</span>
+            <span class="tag">Contact</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://sab-conversion-kit.vercel.app/templates/landing-portfolio.html" target="_blank" rel="noopener" class="btn-demo">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a href="landing-portfolio.html" class="btn-source">Source</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Webinar -->
+      <div class="template-card anim-scale" data-category="event">
+        <div class="card-preview">
+          <iframe src="https://sab-conversion-kit.vercel.app/templates/landing-webinar.html" loading="lazy" sandbox="allow-scripts" title="Webinar Preview"></iframe>
+          <div class="card-preview-overlay"></div>
+          <a href="https://sab-conversion-kit.vercel.app/templates/landing-webinar.html" target="_blank" rel="noopener" class="preview-action">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            Live Preview
+          </a>
+        </div>
+        <div class="card-body">
+          <span class="card-category cat-event">Event</span>
+          <h3 class="card-title">Webinar Landing Page</h3>
+          <p class="card-desc">Template khusus untuk webinar dan event online. Countdown timer, speaker profiles, agenda section, dan registration form.</p>
+          <div class="card-tags">
+            <span class="tag">Countdown</span>
+            <span class="tag">Speakers</span>
+            <span class="tag">Registration</span>
+            <span class="tag">Agenda</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://sab-conversion-kit.vercel.app/templates/landing-webinar.html" target="_blank" rel="noopener" class="btn-demo">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a href="landing-webinar.html" class="btn-source">Source</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Coming Soon -->
+      <div class="template-card anim-scale" data-category="utility">
+        <div class="card-preview">
+          <iframe src="https://sab-conversion-kit.vercel.app/templates/landing-comingsoon.html" loading="lazy" sandbox="allow-scripts" title="Coming Soon Preview"></iframe>
+          <div class="card-preview-overlay"></div>
+          <a href="https://sab-conversion-kit.vercel.app/templates/landing-comingsoon.html" target="_blank" rel="noopener" class="preview-action">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            Live Preview
+          </a>
+        </div>
+        <div class="card-body">
+          <span class="card-category cat-utility">Utility</span>
+          <h3 class="card-title">Coming Soon Page</h3>
+          <p class="card-desc">Halaman pre-launch dengan countdown timer, email subscription, dan teaser content. Bangun antusiasme sebelum produk Anda rilis.</p>
+          <div class="card-tags">
+            <span class="tag">Countdown</span>
+            <span class="tag">Email Capture</span>
+            <span class="tag">Teaser</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://sab-conversion-kit.vercel.app/templates/landing-comingsoon.html" target="_blank" rel="noopener" class="btn-demo">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a href="landing-comingsoon.html" class="btn-source">Source</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Thank You -->
+      <div class="template-card anim-scale" data-category="utility conversion">
+        <div class="card-preview">
+          <iframe src="https://sab-conversion-kit.vercel.app/templates/landing-thankyou.html" loading="lazy" sandbox="allow-scripts" title="Thank You Preview"></iframe>
+          <div class="card-preview-overlay"></div>
+          <a href="https://sab-conversion-kit.vercel.app/templates/landing-thankyou.html" target="_blank" rel="noopener" class="preview-action">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            Live Preview
+          </a>
+        </div>
+        <div class="card-body">
+          <span class="card-category cat-conversion">Conversion</span>
+          <h3 class="card-title">Thank You Page</h3>
+          <p class="card-desc">Halaman konfirmasi setelah form submission. Tingkatkan engagement post-conversion dengan next steps, social sharing, dan upsell offers.</p>
+          <div class="card-tags">
+            <span class="tag">Confirmation</span>
+            <span class="tag">Next Steps</span>
+            <span class="tag">Social Share</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://sab-conversion-kit.vercel.app/templates/landing-thankyou.html" target="_blank" rel="noopener" class="btn-demo">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a href="landing-thankyou.html" class="btn-source">Source</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. 404 Not Found -->
+      <div class="template-card anim-scale" data-category="utility">
+        <div class="card-preview">
+          <iframe src="https://sab-conversion-kit.vercel.app/templates/landing-notfound.html" loading="lazy" sandbox="allow-scripts" title="404 Not Found Preview"></iframe>
+          <div class="card-preview-overlay"></div>
+          <a href="https://sab-conversion-kit.vercel.app/templates/landing-notfound.html" target="_blank" rel="noopener" class="preview-action">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            Live Preview
+          </a>
+        </div>
+        <div class="card-body">
+          <span class="card-category cat-utility">Utility</span>
+          <h3 class="card-title">404 Not Found Page</h3>
+          <p class="card-desc">Custom 404 error page yang tetap on-brand. Arahkan pengunjung kembali ke halaman utama dengan desain yang menarik, bukan membiarkan mereka pergi.</p>
+          <div class="card-tags">
+            <span class="tag">Error Page</span>
+            <span class="tag">Redirect</span>
+            <span class="tag">Branding</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://sab-conversion-kit.vercel.app/templates/landing-notfound.html" target="_blank" rel="noopener" class="btn-demo">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a href="landing-notfound.html" class="btn-source">Source</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Dapur Swindon (Restaurant) -->
+      <div class="template-card anim-scale" data-category="industry">
+        <div class="card-preview">
+          <iframe src="https://sab-conversion-kit.vercel.app/templates/landing-dapurswindon.html" loading="lazy" sandbox="allow-scripts" title="Dapur Swindon Preview"></iframe>
+          <div class="card-preview-overlay"></div>
+          <a href="https://sab-conversion-kit.vercel.app/templates/landing-dapurswindon.html" target="_blank" rel="noopener" class="preview-action">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            Live Preview
+          </a>
+        </div>
+        <div class="card-body">
+          <span class="card-category cat-industry">Industry</span>
+          <h3 class="card-title">Dapur Swindon — Restaurant</h3>
+          <p class="card-desc">Template khusus industri F&B / restoran. Menu showcase, gallery, reservation form, dan location map. Cocok untuk bisnis kuliner.</p>
+          <div class="card-tags">
+            <span class="tag">F&B</span>
+            <span class="tag">Menu</span>
+            <span class="tag">Reservation</span>
+            <span class="tag">Gallery</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://sab-conversion-kit.vercel.app/templates/landing-dapurswindon.html" target="_blank" rel="noopener" class="btn-demo">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a href="landing-dapurswindon.html" class="btn-source">Source</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. SAB Landing (Agency) -->
+      <div class="template-card anim-scale" data-category="business">
+        <div class="card-preview">
+          <iframe src="https://sab-conversion-kit.vercel.app/templates/landing-sablanding.html" loading="lazy" sandbox="allow-scripts" title="SAB Landing Preview"></iframe>
+          <div class="card-preview-overlay"></div>
+          <a href="https://sab-conversion-kit.vercel.app/templates/landing-sablanding.html" target="_blank" rel="noopener" class="preview-action">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            Live Preview
+          </a>
+        </div>
+        <div class="card-body">
+          <span class="card-category cat-business">Business</span>
+          <h3 class="card-title">SAB Agency Landing Page</h3>
+          <p class="card-desc">Full agency landing page SAB.id. Hero parallax, services, case studies, pricing table, stats counter, testimonials, FAQ, dan contact form.</p>
+          <div class="card-tags">
+            <span class="tag">Agency</span>
+            <span class="tag">Full Page</span>
+            <span class="tag">Parallax</span>
+            <span class="tag">Pricing</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://sab-conversion-kit.vercel.app/templates/landing-sablanding.html" target="_blank" rel="noopener" class="btn-demo">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a href="landing-sablanding.html" class="btn-source">Source</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- CTA SECTION                                             -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="cta-section">
+    <div class="cta-content anim-fade">
+      <h2>Siap Meningkatkan Konversi?</h2>
+      <p>Gunakan template ini untuk membangun landing page yang menghasilkan leads berkualitas. Semua template gratis dan siap pakai.</p>
+      <a href="https://wa.me/6282177336889?text=Halo%20SAB%2C%20saya%20tertarik%20dengan%20SAB%20Conversion%20Kit" target="_blank" rel="noopener" class="btn-cta">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Hubungi SAB via WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- FOOTER                                                  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-logo">SAB Conversion Kit<span class="dot">.</span></div>
+    <p>Production-ready landing page templates untuk memaksimalkan konversi bisnis Anda.</p>
+    <div class="footer-links">
+      <a href="../components/index.html">Components</a>
+      <a href="../index.html">Home</a>
+      <a href="https://sab.id" target="_blank" rel="noopener">SAB.id</a>
+      <a href="https://wa.me/6282177336889" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div class="footer-copy">&copy; 2024 SAB.id — Lead Generation Agency Jakarta. All rights reserved.</div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SCRIPTS                                                 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <script>
+    // ── Navbar scroll effect ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ── Scroll animations (Intersection Observer) ──
+    const animEls = document.querySelectorAll('.anim-fade, .anim-up, .anim-scale');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('anim-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    animEls.forEach(el => observer.observe(el));
+
+    // ── Filter functionality ──
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.template-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          const categories = card.dataset.category.split(' ');
+          if (filter === 'all' || categories.includes(filter)) {
+            card.classList.remove('hidden');
+            // Re-trigger animation
+            card.classList.remove('anim-in');
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                card.classList.add('anim-in');
+              });
+            });
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
