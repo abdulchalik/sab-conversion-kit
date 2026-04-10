@@ -154,6 +154,14 @@ Vercel akan membaca `vercel.json` yang sudah ada di root project:
     { "source": "/", "destination": "/templates/landing.html" },
     { "source": "/service", "destination": "/templates/landing-service.html" },
     { "source": "/lead-capture", "destination": "/templates/landing-lead-capture.html" }
+    { "source": "/ecommerce", "destination": "/templates/landing-ecommerce.html" },
+    { "source": "/portfolio", "destination": "/templates/landing-portfolio.html" },
+    { "source": "/webinar", "destination": "/templates/landing-webinar.html" },
+    { "source": "/comingsoon", "destination": "/templates/landing-comingsoon.html" },
+    { "source": "/thankyou", "destination": "/templates/landing-thankyou.html" },
+    { "source": "/notfound", "destination": "/templates/landing-notfound.html" },
+    { "source": "/dapurswindon", "destination": "/templates/landing-dapurswindon.html" },
+    { "source": "/sablanding", "destination": "/templates/landing-sablanding.html" }
   ]
 }
 ```
