@@ -660,3 +660,16 @@ body { overflow-x: hidden; }
     max-width: 30ch;
   }
 }
+
+
+@media (max-width: 480px) {
+  .visual-card{
+    padding-left: 0.8rem !important;
+  }
+  .mini-badge{
+    display: none;
+  }
+  .case-metric-number {
+    font-size: 1.25rem;
+  }
+}
