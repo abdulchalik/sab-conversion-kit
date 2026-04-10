@@ -44,6 +44,7 @@ npm run build
 Please read usage guide in the:
 ```bash
 /docs/USAGE.md
+/docs/TECHNICAL.md
 ```
 
 
